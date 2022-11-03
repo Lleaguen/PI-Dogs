@@ -1,0 +1,5 @@
+.mainContainer{
+    width: 80%;
+    flex-direction: row;
+    margin-left: 10%;
+}

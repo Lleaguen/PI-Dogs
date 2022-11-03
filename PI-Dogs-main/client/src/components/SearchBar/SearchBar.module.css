@@ -1,0 +1,48 @@
+
+.Search{
+    margin:10px;
+    width: 40vh;
+    height: 3vh;
+    border-bottom: 1px solid #888 !important;
+    background: transparent !important;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.7vh;
+}
+
+.Search:hover{
+    border-color: #619ecf;
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+    transition: 2s;
+    cursor: pointer;
+    border-style: none;
+    color: #619ecf;
+    font-size: 2vh;
+    border-radius: 10px;
+}
+
+.button{
+    background-color: white;
+    width: 5vh;
+    height: 5vh;
+    cursor: pointer;
+    border-radius: 80px;
+    border: 0;    
+    align-items: center;
+    background-image: url("./assets/lupa_negra.png");
+    background-size: 4vh;
+    background-repeat: no-repeat;
+    background-position: center;    
+}   
+
+.button:hover{
+    background-image: url('./assets/lupa_blanca.png');
+    background-color: #619ecf;
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+    transition: 2s;
+    cursor: pointer;
+    border-style: none;
+    color: white;
+    border-radius: 10px;
+}

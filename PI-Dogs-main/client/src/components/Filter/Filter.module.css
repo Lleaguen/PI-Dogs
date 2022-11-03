@@ -1,0 +1,40 @@
+.side{
+  display: flex;
+  margin:1vh;
+  justify-content: center;
+}
+.sideBarHeader{
+  padding: 2vh;
+}
+
+.filterSection{
+  padding: 1vh;
+}
+.header{
+  font-family: sans-serif;
+}
+
+.filterHeader{
+  font-family: fantasy;
+  padding: 1ch;
+}
+
+.barra{
+    box-shadow: #619ecf;
+    border: 1px solid #619ecf;
+    width: 1px;
+    height: 6vh;
+    padding: 0;
+    margin: 20px auto 0 auto;
+}
+
+.tooltip{
+  color:#619ecf;
+  cursor: pointer;
+}
+.tooltip:hover{
+  transition: 1s;
+  color: #2b587e;
+  border-top:4px solid #2b587e;
+  border-bottom: 4px solid #2b587e;
+}

@@ -1,0 +1,44 @@
+.Logo{
+    width: 12vh;
+    margin-top:-40px;
+}
+.Logo:hover{
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+    border-radius: 100%;
+    transition: 2s;
+    background-color: #619ecf;
+}
+.NavBar{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    flex-direction: row;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 40px;
+}
+
+.span{
+    box-shadow: #619ecf;
+    border-top: 1px solid #619ecf;
+    height: 2px;
+    width: 80%;
+    padding: 0;
+    margin: 20px auto 0 auto;
+}
+.option{
+    text-decoration: none;
+    color: #1c91f1;
+    font-size: 35px;
+    padding: 5px;
+}
+
+.option:hover{
+    background-color: #619ecf;
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+    transition: 2s;
+    cursor: pointer;
+    border-style: none;
+    color: white;
+    border-radius: 10px;
+}
