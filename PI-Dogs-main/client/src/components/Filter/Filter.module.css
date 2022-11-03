@@ -28,13 +28,84 @@
     margin: 20px auto 0 auto;
 }
 
-.tooltip{
-  color:#619ecf;
+
+.boton_neon {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 0;
+  color: #619ecf;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  position: relative;
+  border-radius: 5px;
   cursor: pointer;
+  transition: all ease-out 200ms;
+  animation: efecto-texto-luz 1.5s ease-in infinite normal both;
 }
-.tooltip:hover{
-  transition: 1s;
-  color: #2b587e;
-  border-top:4px solid #2b587e;
-  border-bottom: 4px solid #2b587e;
+.boton_neon:hover {
+  color: #38EDE8;
+  text-shadow: 0 0 3px #38EDE8;
+  animation: none !important;
+  transform: scale(1.2);
+}
+.boton_neon::after,
+.boton_neon::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -3px;
+  top: -3px;
+  border: 3px solid #619ecf;
+  border-radius: 8px;
+  transition: all ease-out 200ms;
+  animation: efecto-luz 3s ease-in infinite normal both;
+}
+.boton_neon:hover::before,
+.boton_neon:hover::after {
+  border-color: #38EDE8;
+  animation: none !important;
+}
+.boton_neon:hover::before {
+  filter: blur(4px);
+}
+.boton_neon:active {
+  color: #619ecf;
+  text-shadow: 0 0 0 #619ecf;
+}
+.boton_neon:active::before,
+.boton_neon:active::after {
+  border-color: #619ecf;
+  animation: none !important;
+}
+
+@keyframes efecto-texto-luz {
+  from, 20%, 36%, to {
+      color: #619ecf;
+  }
+  23% {
+      color: #38EDE8;
+  }
+}
+
+@keyframes efecto-luz {
+  from, 60%, 70%, 95% {
+      border-color: #619ecf;
+  }
+  65%, to {
+      border-color: #38EDE8;
+  }
+}
+.filterHeader{
+  color: #619ecf;
+}
+
+.span{
+  box-shadow: #619ecf;
+  border-top: 1px solid #619ecf;
+  height: 1px;
+  width: 100%;
+  padding: 0;
+  margin: 20px auto 0 auto;
 }

@@ -61,50 +61,47 @@ router.get('/dogs', async (req,res) => {
                 }
             })
             const allTemperament = await Temperament.findAll()
-            // console.log(allTemperament)
             return res.status(200).json(allTemperament)
         }catch (error){
              res.status(404).send({error: 'There are not temperaments'})
          }
     })
-
-router.post('/dogs', async (req,res) => {
-    // try{
-        let {
-            name,
-            height_min,
-            height_max,
-            weight_min,
-            weight_max,
-            lifeTime,
-            createdInDb,
-            temperament
-        } = req.body;
-
-        const dogChecked = await Dog.findOne({
-            where: { name: name }
-        })
-        if(dogChecked) {
-            return res.status(404).send('The dog already exist')
-        } else {
-            let DogCreated = await Dog.create({
+    router.post('/dogs', async (req,res) => {
+        // try{
+            let {
                 name,
                 height_min,
                 height_max,
                 weight_min,
                 weight_max,
                 lifeTime,
-                createdInDb
+                createdInDb,
+                temperament
+            } = req.body;
+    
+            const dogChecked = await Dog.findOne({
+                where: { name: name }
             })
-            
-            let tempDeDB = await Temperament.findAll({
-                where: {name: temperament}
-            }) 
-            DogCreated.addTemperament(tempDeDB)
-            return res.status(200).send('The dog was created')
-        }
-    })
-
+            if(dogChecked) {
+                return res.status(404).send('The dog already exist')
+            } else {
+                let DogCreated = await Dog.create({
+                    name,
+                    height_min,
+                    height_max,
+                    weight_min,
+                    weight_max,
+                    lifeTime,
+                    createdInDb
+                })
+                
+                let tempDeDB = await Temperament.findAll({
+                    where: {name: temperament}
+                }) 
+                DogCreated.addTemperament(tempDeDB)
+                return res.status(200).send('The dog was created')
+            }
+        })
 // router.delete('/dogs/:id', async (req,res) => { 
 //     let { id } = req.params;
 //     try{

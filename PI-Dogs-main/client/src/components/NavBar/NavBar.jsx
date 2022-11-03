@@ -14,7 +14,9 @@ export default function NavBar() {
             <img id="logoFranco" src={Logo} className={Style.Logo} alt=''/>
           </Link>
         </div>
-        
+        <div className={Style.title}>
+         <span  className={Style.boton_neon}>The Dogs API</span>
+        </div>
         <div>
           <BarSearch />
         </div>

@@ -1,12 +1,13 @@
-import { React, useEffect } from "react";
-import { useDispatch} from "react-redux";
+
+import React,{ useEffect } from "react";
+import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import {
   getDogs,
-  getTemperamentsList,
- // filterDogsByTemperament,
+  getTemperaments,
+  FilterByTemperament,
   orderByName,
-  filterCreated,
+  filterCreatedDog,
   filterDogsByMAXWeight,
   filterDogsByMINWeight,
   orderByWeight
@@ -15,37 +16,52 @@ import styles from '../Filter/Filter.module.css';
 
 export default function Filter() {
     const dispatch = useDispatch();
- 
-    useEffect(() => {
-      dispatch(getDogs());
-      dispatch(getTemperamentsList());
-    }, [dispatch]);
+    
+    const temperaments =useSelector((state) =>  state.temperaments);
+    const allDogs = useSelector((state) => state.allDogs);
   
-   
-    
-    function handleClickOrder(e) {
-      e.preventDefault();
-      dispatch(orderByName(e.target.value));
-    }
-    function handleClickOrderWeight(e) {
-      e.preventDefault();
-      dispatch(orderByWeight(e.target.value));
-    }
+  const minWeights = allDogs
+    .map((el) => el.weight_min)
+    .sort(function (a, b) {
+      return a - b;
+    });
+  const allDogsMinWeights = [...new Set(minWeights)];
+  
+  const maxWeights = allDogs
+    .map((el) => el.weight_max)
+    .sort(function (a, b) {
+      return a - b;
+    });
+  const allDogsMaxWeights = [...new Set(maxWeights)];
 
-    function handleFilterCreated(e) {
-      dispatch(filterCreated(e.target.value));
-    }
-
-    
-    
-    function handleFilteredMAXWeight(e) {
-      e.preventDefault();
-      dispatch(filterDogsByMAXWeight(e.target.value));
-    }
-    function handleFilteredMINWeight(e) {
-      e.preventDefault();
-      dispatch(filterDogsByMINWeight(e.target.value));
-    }
+  useEffect(() => {
+    dispatch(getDogs());
+    dispatch(getTemperaments());
+  }, [dispatch]);
+  
+  function handleClickOrder(e) {
+    e.preventDefault();
+    dispatch(orderByName(e.target.value));
+  }
+  function handleClickOrderWeight(e) {
+    e.preventDefault();
+    dispatch(orderByWeight(e.target.value));
+  }
+  function handleFilterCreated(e) {
+    dispatch(filterCreatedDog(e.target.value));
+  }
+  function handleFilteredByTemp(e) {
+    e.preventDefault();
+        dispatch(FilterByTemperament(e.target.value))
+  }
+  function handleFilteredMAXWeight(e) {
+    e.preventDefault();
+    dispatch(filterDogsByMAXWeight(e.target.value));
+  }
+  function handleFilteredMINWeight(e) {
+    e.preventDefault();
+    dispatch(filterDogsByMINWeight(e.target.value));
+  }
   return (
     <>
       <div className={styles.side}>
@@ -60,7 +76,7 @@ export default function Filter() {
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
               handleClickOrder(e);
-            }}
+            }} className={styles.boton_neon}
           >
             <option defaultValue value="all" hidden>
               Order
@@ -69,12 +85,13 @@ export default function Filter() {
             <option  style={{ fontFamily: 'fantasy'}} value="desc">Z - A</option>
           </select>
         </div>
+        
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Order by weight</h5>
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
               handleClickOrderWeight(e);
-            }} 
+            }} className={styles.boton_neon}
           >
             <option defaultValue value="all" hidden>
               Order
@@ -88,7 +105,7 @@ export default function Filter() {
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
                   handleFilterCreated(e);
-                }}
+                }} className={styles.boton_neon}
               >
             <option  style={{ fontFamily: 'fantasy'}} defaultValue value="all">
               All Sources 🐶
@@ -99,27 +116,49 @@ export default function Filter() {
         </div>
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by temperament</h5>
-          <select style={{ fontFamily: 'fantasy'}} onChange="" /*{(e) => handleFilteredByTemp(e)}*/>
-            <option  style={{ fontFamily: 'fantasy'}} value="all">All Temperaments</option>
+
+          
+          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredByTemp(e)}>
            
-            
+            <option  style={{ fontFamily: 'fantasy'}} key={1+'el'} value='All'>All</option>
+                    {
+                        temperaments.map(temp => (
+                            <option value={temp.name} key={temp.id}> {temp.name} </option>
+                        ))
+                    }
           </select>
         </div>
        
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by max weight</h5>
-          <select style={{ fontFamily: 'fantasy'}} onChange={(e) => handleFilteredMAXWeight(e)}>
-            <option style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
-              
+          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredMAXWeight(e)}>
+            <option style={{ fontFamily: 'fantasy'}} defaultValue>All Weights</option>
+            {allDogsMaxWeights.map((maxWeight) => {
+              return maxWeight ? (
+                <option value={maxWeight} key={maxWeight}>
+                  {maxWeight} kg
+                </option>
+              ) : (
+                ""
+              );
+            })}
 
 
           </select>
         </div>
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by min weight</h5>
-          <select  style={{ fontFamily: 'fantasy'}} onChange={(e) => handleFilteredMINWeight(e)}>
+          <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredMINWeight(e)}>
             <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
-           
+            {allDogsMinWeights.map((minWeight) => {
+              return minWeight ? (
+                <option value={minWeight} key={minWeight}>
+                  {minWeight} kg
+                </option>
+              ) : (
+                ""
+              );
+            })}
 
           </select>
         </div>
@@ -129,12 +168,18 @@ export default function Filter() {
           
           <h5 className={styles.filterHeader}>Add a Woof</h5>
           <div className={styles.addDog}>
-            <Link to="/newDog/" className={styles.tooltip}>
-              <span className={styles.tooltiptext}>🐕🐕 Add your Woof 🐕🐕</span>
+            <Link to="/create/" className={styles.tooltip}>
+            <button type="button" className={styles.boton_neon}>
+        
+        <span>Create a Dog</span>
+</button>
             </Link>
           </div>
         </div>
+        
       </div>
+      
+      <div className={styles.span}></div>
     </>
   );
 }

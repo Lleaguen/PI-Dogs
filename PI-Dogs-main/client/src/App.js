@@ -19,6 +19,4 @@ function App() {
     </BrowserRouter>
   );
 }
-/*<Route path="/dogs/:id" component={DogDetail} />
-        <Route path="/create" component={DogCreate} />*/
 export default App;

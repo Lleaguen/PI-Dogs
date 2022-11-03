@@ -15,8 +15,8 @@
 }
 
 .button:hover{
-    background-color: #a945c7;
-    box-shadow: 0 0 10px #a945c7, 0 0 40px #a945c7, 0 0 80px #4545c7;
+    background-color: #619ecf;
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #4545c7;
     transition: 2s;
     cursor: pointer;
 }

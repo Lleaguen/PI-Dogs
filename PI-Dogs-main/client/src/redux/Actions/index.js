@@ -1,4 +1,9 @@
 import axios from "axios";
+export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS';
+export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL';
+export const FILTER_CREATED_DOG = 'FILTER_CREATED_DOG';
+
 
 export function orderByName(payload) {
     return {
@@ -48,52 +53,43 @@ export function getDogsByName(name) {
     };
 }
 
-export function getTemperamentsList() {
+
+export function getTemperaments() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/temperament');
-        var listOfTemperaments = json.data.map(el => el.name)
+        var json = await axios.get('http://localhost:3001/temperaments')
         return dispatch({
-            type: 'GET_TEMPERAMENTS_LIST',
-            payload: listOfTemperaments
-        });
+            type: 'GET_ALL_TEMPERAMENTS',
+            payload: json.data
+        })
     }
 }
 
-export function postDog(data) {
-    
-        return async function () {
-            const posted = await axios.post('/dogs', data);
-            return posted
-    
-}}
-
-
-
-export function filterDogsByTemperament(payload) {
+export function postDog (payload){
+ 
     return async function (dispatch) {
-        try {
-            var json = await axios.get(`http://localhost:3001/dog/?temperament=${payload}`);
-            return dispatch({
-                type: 'GET_DOGS_BY_TEMP',
-                payload: json.data
-            })
-        } catch (error) {
-            console.log(error, "Error on the filters in actions file")
-        }
+        const response = await axios.post('http://localhost:3001/dogs', payload);
+        return response;
     }
 }
 
-export function filterCreated(payload) {
-    return {
-        type: 'FILTER_CREATED',
+
+export function FilterByTemperament(payload) {
+    return{
+        type: 'FILTER_BY_TEMPERAMENTS',
         payload
     }
 }
 
+export function filterCreatedDog (payload) {
+    return {
+    type: FILTER_CREATED_DOG,
+    payload
+}
+}
 export function getDetails(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
+            var json = await axios.get(`http://localhost:3001/dogs/:${id}`)
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: json.data
@@ -105,10 +101,16 @@ export function getDetails(id) {
 }
 
 
-/*export function deleteDetails() {
+export function deleteDetails() {
     return async function (dispatch){
     return dispatch({
         type: 'DELETE_DETAILS'
     })
 }
-}*/
+}
+
+export function clearDetail ()  {
+    return {
+        type : CLEAR_DETAIL
+    }
+}

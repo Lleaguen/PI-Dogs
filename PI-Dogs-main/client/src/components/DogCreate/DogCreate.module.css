@@ -1,0 +1,50 @@
+
+.box{
+    border: 1px solid #0088f7;
+    width: 23%;
+    flex-direction: row;
+    margin-left: 33%;
+    padding-left: 16vh;
+    margin-top: 7vh;
+    border-radius: 8px;
+    height: 70vh;
+}
+.box:hover{
+    transition: 1s;
+    box-shadow:  0 0 10px #619ecf, 0 0 0px #619ecf, 0 0 30px #619ecf;
+}
+.items{
+    padding-top: 1.5vh;
+}
+.numInput{
+    padding: 0.5vh;
+    width: 30vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px #0088f7;
+    
+}
+.fonts{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px #0088f7;
+    
+    padding: 0.5vh;
+}
+.fontsTittle{
+    
+    padding: 0.5vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 2px #0088f7;
+    
+}
+.fontsTittle:hover{
+    transition: 1s;
+    text-shadow: 0 0 10px #0088f7, 0 0 40px #0088f7, 0 0 80px #0088f7;
+}
+
+.errorStyle{
+    font-family: arial;
+    color:#f17651;
+}

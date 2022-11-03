@@ -24,20 +24,33 @@ function rootReducer(state = initialState, action) {
                 allDogs: action.payload,
             }
        
-        case 'GET_TEMPERAMENTS_LIST':
+        case 'GET_ALL_TEMPERAMENTS':
             return {
                 ...state,
                 temperaments: action.payload
-            }
-       
-        case 'FILTER_CREATED':
-            const createdFilter = action.payload === 'created' ?
-                state.dogs.filter(el => el.createdInDB === true) :
-                state.dogs.filter(el => !el.createdInDB);
-            return {
+              };
+        
+        case 'FILTER_BY_TEMPERAMENTS':
+            
+                const Temp = state.allDogs;
+                const filterTemp = action.payload === 'All' ? 
+                Temp : Temp.filter((el) => {
+                    return el.temperaments?.includes(action.payload)
+                });
+             return{
                 ...state,
-                allDogs: createdFilter,
-            }
+                allDogs: filterTemp,
+            };
+
+
+        case 'FILTER_CREATED':
+            const allDogs = state.allDogs;
+             const filterCreated = action.payload === 'created' ? allDogs.filter(d => d.createdInDb) : allDogs.filter(d => !d.createdInDb)
+        return {
+          ...state,
+          dogs: action.payload === 'all' ? state.allDogs : filterCreated
+        };
+            
         case 'ORDER_BY_NAME':
             const sortedArr = action.payload === 'asc' ?
                 [...state.dogs].sort(function (a, b) {
@@ -90,10 +103,10 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 allDogs: weightMINFiltered
             }
-        case 'POST_DOG':
+        case 'POST_DOG' : 
             return {
-                ...state
-            }
+              ...state
+        };
         case 'GET_DETAILS':
             return{
                 ...state,
