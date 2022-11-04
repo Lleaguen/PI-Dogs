@@ -10,9 +10,6 @@ export default function BarSearch(){
   function handleClick(e){
     e.preventDefault();
   
-
-
-
   if(dogState.length === 0){
     return alert("Please input a name to start the search :3");
   }else{

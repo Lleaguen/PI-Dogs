@@ -17,7 +17,7 @@ import styles from '../Filter/Filter.module.css';
 export default function Filter() {
     const dispatch = useDispatch();
     
-    const temperaments =useSelector((state) =>  state.temperaments);
+    const maldito =useSelector((state) =>  state.temperaments);
     const allDogs = useSelector((state) => state.allDogs);
   
   const minWeights = allDogs
@@ -76,7 +76,7 @@ export default function Filter() {
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
               handleClickOrder(e);
-            }} className={styles.boton_neon}
+            }} className={styles.boton_filter}
           >
             <option defaultValue value="all" hidden>
               Order
@@ -91,7 +91,7 @@ export default function Filter() {
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
               handleClickOrderWeight(e);
-            }} className={styles.boton_neon}
+            }} className={styles.boton_filter}
           >
             <option defaultValue value="all" hidden>
               Order
@@ -105,7 +105,7 @@ export default function Filter() {
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
                   handleFilterCreated(e);
-                }} className={styles.boton_neon}
+                }} className={styles.boton_filter}
               >
             <option  style={{ fontFamily: 'fantasy'}} defaultValue value="all">
               All Sources 🐶
@@ -118,12 +118,12 @@ export default function Filter() {
           <h5 className={styles.filterHeader}>Filter by temperament</h5>
 
           
-          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredByTemp(e)}>
-           
-            <option  style={{ fontFamily: 'fantasy'}} key={1+'el'} value='All'>All</option>
+          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={handleFilteredByTemp}>
+            <option hidden>Temperament</option>
+            <option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
                     {
-                        temperaments.map(temp => (
-                            <option value={temp.name} key={temp.id}> {temp.name} </option>
+                        maldito.map(e => (
+                            <option value={e.name} key={e.id}> {e.name} </option>
                         ))
                     }
           </select>
@@ -131,7 +131,7 @@ export default function Filter() {
        
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by max weight</h5>
-          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredMAXWeight(e)}>
+          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMAXWeight(e)}>
             <option style={{ fontFamily: 'fantasy'}} defaultValue>All Weights</option>
             {allDogsMaxWeights.map((maxWeight) => {
               return maxWeight ? (
@@ -148,7 +148,7 @@ export default function Filter() {
         </div>
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by min weight</h5>
-          <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_neon} onChange={(e) => handleFilteredMINWeight(e)}>
+          <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMINWeight(e)}>
             <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
             {allDogsMinWeights.map((minWeight) => {
               return minWeight ? (

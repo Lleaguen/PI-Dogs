@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BarSearch from "../SearchBar/SearchBar";
 
 export default function NavBar() {
+  
   return (
     <Fragment>
      
@@ -15,7 +16,7 @@ export default function NavBar() {
           </Link>
         </div>
         <div className={Style.title}>
-         <span  className={Style.boton_neon}>The Dogs API</span>
+         <span  className={Style.boton_neon}>T</span>he <span  className={Style.boton_neon}>D</span>ogs <span  className={Style.boton_neon}>API</span>
         </div>
         <div>
           <BarSearch />
@@ -27,7 +28,3 @@ export default function NavBar() {
     </Fragment>
   );
 }
-
-//<div className={Style.menu}>
-//-<Link to="/dogcreate" className={Style.option}>The Woff</Link>
-//</div> 

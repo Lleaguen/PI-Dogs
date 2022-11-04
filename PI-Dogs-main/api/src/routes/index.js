@@ -74,11 +74,12 @@ router.get('/dogs', async (req,res) => {
                 height_max,
                 weight_min,
                 weight_max,
-                lifeTime,
+                life_span,
                 createdInDb,
-                temperament
+                temperament,
+                image
             } = req.body;
-    
+            
             const dogChecked = await Dog.findOne({
                 where: { name: name }
             })
@@ -91,7 +92,8 @@ router.get('/dogs', async (req,res) => {
                     height_max,
                     weight_min,
                     weight_max,
-                    lifeTime,
+                    life_span,
+                    image,
                     createdInDb
                 })
                 

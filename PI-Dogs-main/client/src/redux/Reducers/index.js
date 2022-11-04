@@ -1,3 +1,5 @@
+
+    
 const initialState = {
     dogs: [],
     allDogs: [],
@@ -32,25 +34,26 @@ function rootReducer(state = initialState, action) {
         
         case 'FILTER_BY_TEMPERAMENTS':
             
-                const Temp = state.allDogs;
-                const filterTemp = action.payload === 'All' ? 
-                Temp : Temp.filter((el) => {
-                    return el.temperaments?.includes(action.payload)
-                });
-             return{
+                const temp = state.dogs
+                const filterTemp = action.payload === 'All' ? temp : temp.filter((e) => {
+                    return e.temperament?.includes(action.payload)
+                }) 
+                console.log(filterTemp)
+                return{
+                    ...state,
+                    allDogs: filterTemp,
+                };
+
+                
+
+        case 'FILTER_CREATED_DOG':
+            const createdFilter = action.payload === 'created' ?
+                state.dogs.filter(el => el.createdInDB === true) :
+                state.dogs.filter(el => !el.createdInDB);
+            return {
                 ...state,
-                allDogs: filterTemp,
-            };
-
-
-        case 'FILTER_CREATED':
-            const allDogs = state.allDogs;
-             const filterCreated = action.payload === 'created' ? allDogs.filter(d => d.createdInDb) : allDogs.filter(d => !d.createdInDb)
-        return {
-          ...state,
-          dogs: action.payload === 'all' ? state.allDogs : filterCreated
-        };
-            
+                allDogs: createdFilter,
+            }
         case 'ORDER_BY_NAME':
             const sortedArr = action.payload === 'asc' ?
                 [...state.dogs].sort(function (a, b) {
@@ -115,7 +118,7 @@ function rootReducer(state = initialState, action) {
         case 'DELETE_DETAILS':
             return{
                 ...state,
-                details: []
+                details: {}
             }
         default:
             return state

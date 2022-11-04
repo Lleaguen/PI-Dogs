@@ -75,7 +75,7 @@ export function postDog (payload){
 
 export function FilterByTemperament(payload) {
     return{
-        type: 'FILTER_BY_TEMPERAMENTS',
+        type: FILTER_BY_TEMPERAMENTS,
         payload
     }
 }
@@ -88,25 +88,22 @@ export function filterCreatedDog (payload) {
 }
 export function getDetails(id) {
     return async function (dispatch) {
-        try {
-            var json = await axios.get(`http://localhost:3001/dogs/:${id}`)
+        
+            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: json.data
             })
-        } catch (error) {
-            console.log(error)
-        }
+        
     }
 }
 
 
 export function deleteDetails() {
-    return async function (dispatch){
-    return dispatch({
+       return{ 
         type: 'DELETE_DETAILS'
-    })
-}
+    }
+
 }
 
 export function clearDetail ()  {

@@ -36,6 +36,8 @@ export default function Dogs() {
             id={el.id}
             name={el.name}
             image={el.image}
+            weight_min={el.weight_min}
+            weight_max={el.weight_max}
             temperament={el.temperament}
             temperaments={el.temperaments}
           />

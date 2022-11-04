@@ -59,7 +59,13 @@
       color:#619ecf;
       font-family: monospace;
     }
+    .dogTemp2{
+      color: rgb(255, 255, 255);
+      text-align: center;
+      color:#619ecf;
+      font-family: monospace;
     
+    }
     .imageArea {
       display: flex;
       border-radius: 4%;

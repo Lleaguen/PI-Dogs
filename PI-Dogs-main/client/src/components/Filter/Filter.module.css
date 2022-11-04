@@ -28,6 +28,25 @@
     margin: 20px auto 0 auto;
 }
 
+.boton_filter{
+  display: inline-block;
+  padding: 10px ;
+  background-color: transparent;
+  border: 2px solid #619ecf;
+  color: #619ecf;
+  width: 15vh;
+  letter-spacing: 5px;
+  position: relative;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease-out 200ms; 
+}
+.boton_filter:hover{
+  transform: scale(1.1);
+  color:#35c3be;
+  border-color: #38EDE8;
+  transition: 1s;
+}
 
 .boton_neon {
   display: inline-block;

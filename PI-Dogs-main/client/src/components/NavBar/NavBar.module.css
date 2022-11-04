@@ -26,12 +26,6 @@
     padding: 0;
     margin: 20px auto 0 auto;
 }
-.option{
-    text-decoration: none;
-    color: #1c91f1;
-    font-size: 35px;
-    padding: 5px;
-}
 
 .option:hover{
     background-color: #619ecf;
@@ -50,9 +44,7 @@
     border: 0;
     color: #619ecf;
     text-transform: uppercase;
-    padding-left: 180px;
     font-size: 4vh;
-    letter-spacing: 5px;
     position: relative;
     transition: all ease-out 200ms;
     animation: efecto-texto-luz 2s ease-in infinite normal both;

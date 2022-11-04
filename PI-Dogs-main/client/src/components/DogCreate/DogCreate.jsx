@@ -57,12 +57,12 @@ const validate = (input) => {
         }
     }
 
-    if (!input.lifeTime || input.lifeTime <= 0){
-        errors.lifeTime = 'The life span must be grather'
+    if (!input.life_span || input.life_span <= 0){
+        errors.life_span = 'The life span must be grather'
     }
-    if(input.lifeTime){
+    if(input.life_span){
         if (!/^[0-9]*$/) {
-            errors.lifeTime = 'It must be only numbers'
+            errors.life_span = 'It must be only numbers'
         }
     }
 
@@ -88,7 +88,7 @@ export default function CreateDog () {
         height_max:0,
         weight_min:0,
         weight_max:0,
-        lifeTime:0,
+        life_span:0,
         image : "",
         temperament:[]
     })
@@ -133,7 +133,8 @@ export default function CreateDog () {
             height_max: 0,
             weight_min: 0,
             weight_max: 0,
-            lifeTime: 0,
+            life_span: 0,
+            image:"",
             temperament: []
         })
         history.push('/home')
@@ -187,11 +188,13 @@ export default function CreateDog () {
         <h3 className={style.fonts} >MAX WEIGHT: </h3>
         <input min='0' className={style.numInput} type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
         </div>
-
-
+        <div className={style.items}>
+              <label className={style.fonts}>Image URL:</label>
+              <input className={style.numInput} type="url" value={input.image} name="image" placeholder="http://myimageontheweb.com" onChange={(e) => handleChange(e)} />
+        </div>
         <div className = {style.items}>
             <h3 className={style.fonts}>LIFE SPAN:</h3>
-            <input min='0' className={style.numInput} type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
+            <input min='0' className={style.numInput} type='number' value={input.life_span} name="life_span" onChange={e => handleChange(e)} />
         </div>
         <div>
 
@@ -219,6 +222,7 @@ export default function CreateDog () {
                 errors.life_span ||
                 errors.especial1 ||
                 errors.especial2 ||
+                errors.image ||
                 !input.name.length ||
                 input.height_min <= 0||
                 input.height_max <= 0||
@@ -227,12 +231,13 @@ export default function CreateDog () {
                 input.life_span <= 0 ||
                 input.height_min >= input.height_max ||
                 input.weight_min >= input.weight_max ||
+                !input.image ||
                 !input.temperament.length)
                 ?
 
                 <div className={style.btnh2} >THE DOG CAN NOT BE CREATED YET</div>
                 :
-                <button className={style.btn} type='submit'>CREATE</button>
+                <button className={style.numInput} type='submit'>CREATE</button>
                 
             }
                 </form>
@@ -241,8 +246,8 @@ export default function CreateDog () {
                         {input.temperament.map((d , i) => {
                             return (
                                 <div key={i++}>
-                            <div className={style.btnh3}> {d} </div>
-                            <button className= {style.eraserbtn} onClick={() => handleErase(d)}>X</button>
+                            <div className={style.numInput}> {d} </div>
+                            <button className= {style.numInput} onClick={() => handleErase(d)}>X</button>
                             </div>
                                 )
                             })
