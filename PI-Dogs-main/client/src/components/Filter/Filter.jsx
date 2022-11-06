@@ -68,7 +68,6 @@ export default function Filter() {
         <div className={styles.sideBarHeader}>
           <h4 className={styles.header}>Find by Filter</h4>
             <span className={styles.header}>🐕🐕🐕🐕</span>
-         
         </div>
         <hr className={styles.barra}/>
         <div className={styles.filterSection}>

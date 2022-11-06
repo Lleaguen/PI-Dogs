@@ -83,22 +83,32 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 40px;
-
+    transition: 2s;
 }
 
+.image{
+    position: absolute;
+    display: flex;
+    border-radius: 100% ;
+    margin-left: 480px;
+    height: 36vh;
+    background-color: rgba(0, 0, 0, .7);
+}
 .consigna{  
+    
     display: flex;
     font-family: fantasy;
     justify-content: flex-start;
     color: transparent;
     margin: 20px;
+    margin-right:  200px;
     margin-left: -90%;
     -webkit-text-stroke: 2px #1c91f1;
     padding: 7px;
 }
 .contain{
     margin-left:-100px ;
-    margin-top: -320px;
+    margin-top: -330px;
     transition: 2s;
     display: flex;
     flex-direction: column;
@@ -108,7 +118,7 @@
     -webkit-text-stroke: 2px #1c91f1;
     justify-content: space-between;
     border: 2px solid #1c91f1;
-    width: 30vh;
+    width: 50vh;
     height: 30vh;
     border-radius: 40px;
     margin-bottom: 10px;

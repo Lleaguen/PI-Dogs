@@ -4,17 +4,20 @@ import { getDogsByName } from "../../redux/Actions/index";
 import Style from "./SearchBar.module.css";
 
 export default function BarSearch(){
-  const [dogState, setDogsState] = useState("");
+  const [dogState, setDogsState] = useState([]);
   const dispatch = useDispatch();
 
   function handleClick(e){
     e.preventDefault();
   
+
+
+
   if(dogState.length === 0){
     return alert("Please input a name to start the search :3");
   }else{
     dispatch(getDogsByName(dogState));
-    setDogsState("");
+    setDogsState(e.target.value);
   }
 }
   return(

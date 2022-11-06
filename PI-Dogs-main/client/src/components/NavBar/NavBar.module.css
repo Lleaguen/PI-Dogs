@@ -27,19 +27,23 @@
     margin: 20px auto 0 auto;
 }
 
-.option:hover{
-    background-color: #619ecf;
-    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
-    transition: 2s;
-    cursor: pointer;
-    border-style: none;
-    color: white;
-    border-radius: 10px;
+.neon{
+    display: inline-block;
+    color: transparent;    
+    -webkit-text-stroke: 2px #1c91f1;
+    font-size: 4vh;
+    position: relative;
+    transition: all ease-out 200ms;
+
+}
+
+.tittle{
+    padding-left: 190px;
 }
 
 .boton_neon {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 20px 5px;
     background-color: transparent;
     border: 0;
     color: #619ecf;

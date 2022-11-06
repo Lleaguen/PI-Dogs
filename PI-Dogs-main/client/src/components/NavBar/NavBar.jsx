@@ -4,6 +4,7 @@ import Style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import BarSearch from "../SearchBar/SearchBar";
 
+
 export default function NavBar() {
   
   return (
@@ -15,8 +16,8 @@ export default function NavBar() {
             <img id="logoFranco" src={Logo} className={Style.Logo} alt=''/>
           </Link>
         </div>
-        <div className={Style.title}>
-         <span  className={Style.boton_neon}>T</span>he <span  className={Style.boton_neon}>D</span>ogs <span  className={Style.boton_neon}>API</span>
+        <div className={Style.tittle}>
+         <span  className={Style.boton_neon}>T</span><span className={Style.neon}>he</span> <span  className={Style.boton_neon}>D</span><span className={Style.neon}>ogs</span> <span  className={Style.boton_neon}>API</span>
         </div>
         <div>
           <BarSearch />

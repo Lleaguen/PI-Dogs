@@ -25,9 +25,9 @@ export default function DogDetail() {
         <div className={styles.background}>
           
           {dog.length > 0 ? 
-        <div className={styles.general}>
-        
+        <div className={styles.general}>   
                 <img  className={styles.image} src={dog[0].image} alt="woof" width="400" height="400" />
+                
         <div className={styles.dogdetail} >
         
         <h1 className={styles.consigna}> Name :</h1>
