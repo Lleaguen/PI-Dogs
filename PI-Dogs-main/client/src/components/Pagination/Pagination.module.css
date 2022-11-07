@@ -2,7 +2,7 @@
     margin: 7px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     list-style-type: none;
     gap: 0.1rem;

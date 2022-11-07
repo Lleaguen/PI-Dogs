@@ -4,7 +4,8 @@ const initialState = {
     dogs: [],
     allDogs: [],
     temperaments: [],
-    details:[]
+    details:[],
+    breeds: []
 }
 
 function rootReducer(state = initialState, action) {

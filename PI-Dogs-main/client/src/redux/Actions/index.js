@@ -88,13 +88,17 @@ export function filterCreatedDog (payload) {
 }
 export function getDetails(id) {
     return async function (dispatch) {
-        
+        /* async await
             var json = await axios.get(`http://localhost:3001/dogs/${id}`)
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: json.data
-            })
-        
+            })*/
+        return fetch(`http://localhost:3001/dogs/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            dispatch({type: 'GET_DETAILS', payload:data})
+        })
     }
 }
 
@@ -104,8 +108,18 @@ export function deleteDetails() {
         type: 'DELETE_DETAILS'
     }
 
+}  
+/*
+export function getBreeds() {
+    return async function (dispatch) {
+        var json = await axios.get('http://localhost:3001/breedGroups');
+        return dispatch({
+            type: 'GET_BREEDS',
+            payload: json.data
+        });
+    }
 }
-
+*/
 export function clearDetail ()  {
     return {
         type : CLEAR_DETAIL

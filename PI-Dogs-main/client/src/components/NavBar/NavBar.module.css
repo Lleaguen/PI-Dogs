@@ -34,7 +34,7 @@
     font-size: 4vh;
     position: relative;
     transition: all ease-out 200ms;
-
+    animation: lux 1.1s ease-in infinite normal both;
 }
 
 .tittle{
@@ -51,7 +51,7 @@
     font-size: 4vh;
     position: relative;
     transition: all ease-out 200ms;
-    animation: efecto-texto-luz 2s ease-in infinite normal both;
+    animation: efecto-texto-luz 1s ease-in infinite normal both;
 }
 .boton_neon:hover {
     color: #38EDE8;
@@ -68,7 +68,7 @@
     top: -3px;
     border-radius: 8px;
     transition: all ease-out 200ms;
-    animation: efecto-luz 1.5s ease-in infinite normal both;
+    animation: efecto-luz 0s ease-in infinite normal both;
 }
 .boton_neon:hover::before,
 .boton_neon:hover::after {
@@ -93,5 +93,13 @@
     }
     23% {
         color: #38EDE8;
+    }
+}
+@keyframes lux {
+    from, 20%, 36%, to{
+        -webkit-text-stroke: 2px #1c91f1;
+    }
+    23%{
+        -webkit-text-stroke: 2px #38EDE8;
     }
 }

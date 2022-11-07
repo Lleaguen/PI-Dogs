@@ -26,7 +26,7 @@ export default function Dogs() {
     <Fragment>
      <div className={styles.dogsArea}>
        
-        <div className={styles.pagination}></div>
+        <div className={styles.showCards}></div>
         {
           
           currentDogs.map((el) => { 
@@ -44,13 +44,16 @@ export default function Dogs() {
 
         )})
         }
-         <Pagination
+       
+      </div>
+      <div className={styles.paginate}>
+      <Pagination
           dogsPerPage={dogsPerPage}
           allDogs={allDogs.length}
           pagination={pagination}
           currentPage={currentPage}
         />
-      </div>
+        </div>
     </Fragment>
   );
 }

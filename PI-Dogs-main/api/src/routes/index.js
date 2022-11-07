@@ -104,16 +104,32 @@ router.get('/dogs', async (req,res) => {
                 return res.status(200).send('The dog was created')
             }
         })
-// router.delete('/dogs/:id', async (req,res) => { 
-//     let { id } = req.params;
-//     try{
-//         await Dog.destroy({
-//             where: {id: id}
-//         })
-//         res.send('se borro el dog')
-//     } catch(error){
-//         res.send({error:'no se borro'})
-//     }
-// })
+/* router.delete('/dogs/:id', async (req,res) => { 
+    let { id } = req.params;
+     try{
+         await Dog.destroy({
+             where: {id: id}
+         })
+         res.send('se borro el dog')
+    } catch(error){
+         res.send({error:'no se borro'})
+   }
+})
+-
+router.get('/breedGroups' , async (req, res) => {
+    try {
+        const everyDog = await getAllDogs();
+    const everyBreedGroup = everyDog?.map((dog) => {
+        if (!dog.breed_group) {
+            "No info"
+        }else { return dog.breed_group }
+    });
+    const eachBreedGroup = [...new Set(everyBreedGroup.flat())]
+    res.status(200).json(eachBreedGroup.sort())
+    } catch (error) {
+        console.log(error, "Error on breeds route")
+    }
+});
+*/
 
 module.exports = router;

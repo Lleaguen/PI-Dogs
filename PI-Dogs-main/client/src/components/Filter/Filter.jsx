@@ -14,6 +14,15 @@ import {
 } from "../../redux/Actions/index";
 import styles from '../Filter/Filter.module.css';
 
+
+
+import { createContext } from 'react';
+import { useState } from 'react';
+import ReactSwitch from 'react-switch';
+
+export const ThemeContext = createContext(null);
+
+
 export default function Filter() {
     const dispatch = useDispatch();
     
@@ -61,13 +70,22 @@ export default function Filter() {
   function handleFilteredMINWeight(e) {
     e.preventDefault();
     dispatch(filterDogsByMINWeight(e.target.value));
+  };
+  const [theme, setTheme] = useState("light");
+  
+  const toggleTheme = () =>{
+    setTheme((curr) => (curr=== 'light' ? 'dark' : 'light'))
   }
+   
   return (
     <>
-      <div className={styles.side}>
+    
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <div className={styles.side} id="light">
         <div className={styles.sideBarHeader}>
-          <h4 className={styles.header}>Find by Filter</h4>
-            <span className={styles.header}>🐕🐕🐕🐕</span>
+          <h4 className={styles.header}>Change Theme</h4>
+            
+         <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'}/>     
         </div>
         <hr className={styles.barra}/>
         <div className={styles.filterSection}>
@@ -179,6 +197,8 @@ export default function Filter() {
       </div>
       
       <div className={styles.span}></div>
+      
+      </ThemeContext.Provider>
     </>
   );
 }

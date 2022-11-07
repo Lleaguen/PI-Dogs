@@ -2,6 +2,7 @@ import React , {  useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  getDetails, deleteDetails } from "../../redux/Actions/index";
 import { useParams /*Link */} from "react-router-dom";
+import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar"
 
 import styles from "../DogDetail/DogDetail.module.css";
@@ -21,7 +22,8 @@ export default function DogDetail() {
     return(
       <>
         <NavBar />
-
+        <div className={styles.container}>
+          <div className={styles.contaimain}>
         <div className={styles.background}>
           
           {dog.length > 0 ? 
@@ -48,6 +50,10 @@ export default function DogDetail() {
           </div>
     
         : <div> <h1 className={styles.consigna2}>LOADING...</h1> </div> }
+        
+        </div>
+        </div>
+        <Footer/>
         </div>
         </>
         )

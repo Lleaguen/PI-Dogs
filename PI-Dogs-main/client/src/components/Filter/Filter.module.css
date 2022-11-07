@@ -129,4 +129,32 @@
   width: 100%;
   padding: 0;
   margin: 20px auto 0 auto;
+}/*
+.imagemoon{
+  margin: 2px;
+  padding: 5px;
+  width: 15px;
+  height: 15px; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./assets/moonw.svg");
+}
+.imagesun{
+  margin: 2px;
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./assets/sun.svg");
+}
+*/
+
+#light{
+  background-color: #282c34;
+}
+
+#dark{
+  background-color: #282c34;
+  color: aliceblue;
 }
