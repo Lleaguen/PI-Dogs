@@ -105,6 +105,16 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 allDogs: weightMAXFiltered
             }
+
+            case 'FILTER_BY_MAX_HEIGHT':
+                const allsdogs = state.allDogs
+                const heightMAXFiltered = action.payload === 'all' ?
+                allsdogs :
+                allsdogs.filter(el => el.height_max <= action.payload)
+                return {
+                    ...state,
+                    allDogs: heightMAXFiltered
+                }    
         case 'FILTER_BY_MIN_WEIGHT':
             const allDoguis = state.allDogs
             const weightMINFiltered = action.payload === 'all' ?
@@ -114,6 +124,16 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 allDogs: weightMINFiltered
             }
+            case 'FILTER_BY_MIN_HEIGHT':
+                const mindogshei = state.allDogs
+                const heightMINFiltered = action.payload === 'all' ?
+                    mindogshei :
+                    mindogshei.filter(el => el.height_min >= action.payload)
+                return {
+                    ...state,
+                    allDogs: heightMINFiltered
+                }
+
         case 'POST_DOG' : 
             return {
               ...state

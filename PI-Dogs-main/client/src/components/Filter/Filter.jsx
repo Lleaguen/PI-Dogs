@@ -12,6 +12,8 @@ import {
   filterDogsByMINWeight,
   orderByWeight,
   getBreeds,
+  filterDogsByMAXHeight,
+   filterDogsByMINHeight
   //FilterByBreeds
 } from "../../redux/Actions/index";
 import styles from '../Filter/Filter.module.css';
@@ -68,7 +70,16 @@ export default function Filter() {
   function handleFilteredMINWeight(e) {
     e.preventDefault();
     dispatch(filterDogsByMINWeight(e.target.value));
-  };/*-
+  };
+  function handleFilteredMAXHeight(e) {
+    e.preventDefault();
+    dispatch(filterDogsByMAXHeight(e.target.value));
+  }
+  function handleFilteredMINHeight(e) {
+    e.preventDefault();
+    dispatch(filterDogsByMINHeight(e.target.value));
+  };
+  /*-
   function handleFilteredByBreed(e) {
     e.preventDefault();
     dispatch(FilterByBreeds(e.target.value));
@@ -81,7 +92,7 @@ export default function Filter() {
     
     <div className={styles.side} id="light">
         <div className={styles.sideBarHeader}>
-          <h4 className={styles.header}>Change Theme</h4>
+          <h4 className={styles.header}>Theme</h4>
             
         <DarkMode/>
         </div>
@@ -130,7 +141,7 @@ export default function Filter() {
           </select>
         </div>
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Filter by temperament</h5>
+          <h5 className={styles.filterHeader}>Filter by temp</h5>
 
           
           <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={handleFilteredByTemp}>
@@ -177,7 +188,39 @@ export default function Filter() {
 
           </select>
         </div>
-        
+        <div className={styles.filterSection}>
+          <h5 className={styles.filterHeader}>Filter by max height</h5>
+          <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMAXHeight(e)}>
+            <option style={{ fontFamily: 'fantasy'}} defaultValue>All heights</option>
+            {allDogsMaxWeights.map((height_max) => {
+              return height_max ? (
+                <option style={{ fontFamily: 'fantasy'}} value={height_max} key={height_max}>
+                  {height_max} cm
+                </option>
+              ) : (
+                ""
+              );
+            })}
+
+
+          </select>
+        </div>
+        <div className={styles.filterSection}>
+          <h5 className={styles.filterHeader}>Filter by min weight</h5>
+          <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMINHeight(e)}>
+            <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
+            {allDogsMinWeights.map((height_min) => {
+              return height_min ? (
+                <option style={{ fontFamily: 'fantasy'}} value={height_min} key={height_min}>
+                  {height_min} cm
+                </option>
+              ) : (
+                ""
+              );
+            })}
+
+          </select>
+        </div>
         <hr className={styles.barra}/>
         <div className={styles.filterSection}>
           

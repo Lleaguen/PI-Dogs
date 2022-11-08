@@ -4,19 +4,21 @@
   justify-content: center;
 }
 .sideBarHeader{
-  padding: 2vh;
+  padding: 10px;
+  width: 10%;
 }
 
 .filterSection{
-  padding: 1vh;
+  width: 100%;
 }
 .header{
   font-family: sans-serif;
+  
 }
 
 .filterHeader{
   font-family: fantasy;
-  padding: 1ch;
+  padding: 10px;
 }
 
 
@@ -25,19 +27,17 @@
     box-shadow: #619ecf;
     border: 1px solid #619ecf;
     width: 1px;
-    height: 6vh;
-    padding: 0;
-    margin: 20px auto 0 auto;
 }
 
 .boton_filter{
   display: inline-block;
   padding: 10px ;
+  margin: 5px;
   background-color: transparent;
   border: 2px solid #619ecf;
   color: #619ecf;
-  width: 15vh;
-  letter-spacing: 5px;
+  width: 10vh;
+  letter-spacing: 3px;
   position: relative;
   border-radius: 5px;
   cursor: pointer;
@@ -57,10 +57,11 @@
   border: 0;
   color: #619ecf;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 1px;
   position: relative;
   border-radius: 5px;
   cursor: pointer;
+  margin-left: 10px;
   transition: all ease-out 200ms;
   animation: efecto-texto-luz 1.5s ease-in infinite normal both;
 }
@@ -125,7 +126,7 @@
 .span{
   box-shadow: #619ecf;
   border-top: 1px solid #619ecf;
-  height: 1px;
+  height: 2px;
   width: 100%;
   padding: 0;
   margin: 20px auto 0 auto;

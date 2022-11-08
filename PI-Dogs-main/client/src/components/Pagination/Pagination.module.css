@@ -21,7 +21,7 @@
     border: 0.0625rem solid #619ecf; /* 1px */
     box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
     color: #619ecf;
-    background-color: white;
+    background-color: transparent;
     border-radius: 100%;
   }
   

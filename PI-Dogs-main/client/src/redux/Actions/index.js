@@ -36,6 +36,12 @@ export function filterDogsByMAXWeight(payload) {
         payload
     }
 }
+export function filterDogsByMAXHeight(payload) {
+    return {
+        type: 'FILTER_BY_MAX_HEIGHT',
+        payload
+    }
+}
 
 export function filterDogsByMINWeight(payload) {
     return {
@@ -44,6 +50,13 @@ export function filterDogsByMINWeight(payload) {
     }
 }
 
+
+export function filterDogsByMINHeight(payload) {
+    return {
+        type: 'FILTER_BY_MIN_HEIGHT',
+        payload
+    }
+}
 export function getDogsByName(name) {
     return async function (dispatch) {
         const { data } = await axios.get(`http://localhost:3001/dogs?name=${name}`);

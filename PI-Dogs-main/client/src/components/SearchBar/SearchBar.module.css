@@ -23,7 +23,7 @@
 }
 
 .button{
-    background-color: white;
+    background-color: transparent;
     width: 5vh;
     height: 5vh;
     cursor: pointer;
