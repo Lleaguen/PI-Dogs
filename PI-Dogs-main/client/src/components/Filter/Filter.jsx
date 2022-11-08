@@ -10,17 +10,13 @@ import {
   filterCreatedDog,
   filterDogsByMAXWeight,
   filterDogsByMINWeight,
-  orderByWeight
+  orderByWeight,
+  getBreeds,
+  //FilterByBreeds
 } from "../../redux/Actions/index";
 import styles from '../Filter/Filter.module.css';
+import DarkMode from "../darkMode";
 
-
-
-import { createContext } from 'react';
-import { useState } from 'react';
-import ReactSwitch from 'react-switch';
-
-export const ThemeContext = createContext(null);
 
 
 export default function Filter() {
@@ -28,6 +24,7 @@ export default function Filter() {
     
     const maldito =useSelector((state) =>  state.temperaments);
     const allDogs = useSelector((state) => state.allDogs);
+  //  const brds = useSelector((state) => state.breeds);
   
   const minWeights = allDogs
     .map((el) => el.weight_min)
@@ -46,6 +43,7 @@ export default function Filter() {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperaments());
+    dispatch(getBreeds());
   }, [dispatch]);
   
   function handleClickOrder(e) {
@@ -70,22 +68,22 @@ export default function Filter() {
   function handleFilteredMINWeight(e) {
     e.preventDefault();
     dispatch(filterDogsByMINWeight(e.target.value));
-  };
-  const [theme, setTheme] = useState("light");
+  };/*-
+  function handleFilteredByBreed(e) {
+    e.preventDefault();
+    dispatch(FilterByBreeds(e.target.value));
+  };---*/
+
   
-  const toggleTheme = () =>{
-    setTheme((curr) => (curr=== 'light' ? 'dark' : 'light'))
-  }
    
   return (
     <>
     
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
     <div className={styles.side} id="light">
         <div className={styles.sideBarHeader}>
           <h4 className={styles.header}>Change Theme</h4>
             
-         <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'}/>     
+        <DarkMode/>
         </div>
         <hr className={styles.barra}/>
         <div className={styles.filterSection}>
@@ -140,7 +138,7 @@ export default function Filter() {
             <option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
                     {
                         maldito.map(e => (
-                            <option value={e.name} key={e.id}> {e.name} </option>
+                            <option style={{ fontFamily: 'fantasy'}} value={e.name} key={e.id}> {e.name} </option>
                         ))
                     }
           </select>
@@ -152,7 +150,7 @@ export default function Filter() {
             <option style={{ fontFamily: 'fantasy'}} defaultValue>All Weights</option>
             {allDogsMaxWeights.map((maxWeight) => {
               return maxWeight ? (
-                <option value={maxWeight} key={maxWeight}>
+                <option style={{ fontFamily: 'fantasy'}} value={maxWeight} key={maxWeight}>
                   {maxWeight} kg
                 </option>
               ) : (
@@ -169,7 +167,7 @@ export default function Filter() {
             <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
             {allDogsMinWeights.map((minWeight) => {
               return minWeight ? (
-                <option value={minWeight} key={minWeight}>
+                <option style={{ fontFamily: 'fantasy'}} value={minWeight} key={minWeight}>
                   {minWeight} kg
                 </option>
               ) : (
@@ -197,8 +195,22 @@ export default function Filter() {
       </div>
       
       <div className={styles.span}></div>
-      
-      </ThemeContext.Provider>
     </>
   );
 }
+/*
+
+<div className={styles.filterSection}>
+<h5 className={styles.filterHeader}>Filter by breed</h5>
+<select style={{ fontFamily: 'fantasy'}} onChange={handleFilteredByBreed} className={styles.boton_filter}>
+<option hidden>Breeds</option>
+
+<option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
+{
+              brds.map(e => (
+                  <option style={{ fontFamily: 'fantasy'}}  value={e} > {e} </option>
+              ))
+          }
+</select>
+</div>
+*/

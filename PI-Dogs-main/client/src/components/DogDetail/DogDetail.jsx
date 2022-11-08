@@ -37,14 +37,15 @@ export default function DogDetail() {
         <h2 className={styles.consigna}>Temperaments :</h2>
         <h2 className={styles.consigna}> Weight : KG</h2>
         <h2 className={styles.consigna}> Height : CM</h2>
+        <h2 className={styles.consigna}> Breed Group : </h2>
         
         <div className={styles.contain}> 
         <h2 className={styles.data}>{dog[0].name ? dog[0].name : <span className={styles.barra}>----</span> } </h2> 
         <h2 className={styles.data}> {dog[0].life_span ? dog[0].life_span : <span className={styles.barra}>----</span>  } </h2>
         <h2 className={styles.data}>{dog[0].temperament ? dog[0].temperament : <span className={styles.barra}>----</span>  }</h2>
         <h2 className={styles.data}> {dog[0].weight_min ? dog[0].weight_min : <span className={styles.barra}>----</span> } - {dog[0].weight_max ? dog[0].weight_max : <span className={styles.barra}>----</span> }</h2>
-        <h2> {dog[0].height ? dog[0].height : <span className={styles.barra}>----</span> }</h2>
-        
+        <h2 className={styles.data}> {dog[0].height_min ? dog[0].height_min : <span className={styles.barra}>----</span> } - {dog[0].height_max ? dog[0].height_max : <span className={styles.barra}>----</span> } - </h2>
+        <h2 className={styles.data}>{dog[0].breed_group ? dog[0].breed_group : <span className={styles.barra}>----</span>}</h2>
         </div>
         </div>
           </div>

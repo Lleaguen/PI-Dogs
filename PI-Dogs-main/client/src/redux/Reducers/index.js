@@ -45,7 +45,14 @@ function rootReducer(state = initialState, action) {
                     allDogs: filterTemp,
                 };
 
-                
+        case 'FILTER_BY_BREEDS':  
+        const allDogs = state.dogs
+            if (action.payload === 'all') return allDogs
+            return {
+                ...state,
+                allDogs: action.payload,
+                dogs: allDogs
+            }
 
         case 'FILTER_CREATED_DOG':
             const createdFilter = action.payload === 'created' ?
@@ -121,6 +128,17 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 details: {}
             }
+        case 'DELETE_DOG':
+            return {
+                ...state,
+                dogs: state.dogs.filter(e => e.id !== action.payload)
+            }
+        case 'GET_BREEDS':
+            return {
+                ...state,
+                breeds: action.payload
+            }
+
         default:
             return state
     }

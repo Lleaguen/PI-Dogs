@@ -3,7 +3,7 @@
 .contain:hover{
     padding: 10px;
     background-color: #619ecf;
-    background: #e1e3e4;
+    background: transparent;
     box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
     transition: 2s;
     border-radius: 10px;
@@ -12,7 +12,7 @@
 .background:hover{
     padding: 10px;
     background-color: #619ecf;
-    background: #e1e3e4;
+    background: transparent;
     box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
     transition: 2s;
     border-radius: 10px;
@@ -115,7 +115,7 @@
 }
 .contain{
     margin-left:-100px ;
-    margin-top: -330px;
+    margin-top: -390px;
     transition: 2s;
     display: flex;
     flex-direction: column;
@@ -126,7 +126,7 @@
     justify-content: space-between;
     border: 2px solid #1c91f1;
     width: 50vh;
-    height: 30vh;
+    height: 35vh;
     border-radius: 40px;
     margin-bottom: 10px;
 }

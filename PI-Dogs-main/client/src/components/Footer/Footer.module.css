@@ -8,7 +8,7 @@
   }
 
   .linked{
-    background-color: white;
+    background-color: transparent;
     width: 4vh;
     height: 4vh; 
     background-size: 7vh;
@@ -35,7 +35,7 @@
   }
 
   .git{
-    background-color: white;
+    background-color: transparent;
     width: 4vh;
     height: 4vh; 
     background-size: 5vh;
@@ -49,7 +49,7 @@
   }
   .git:hover{
     background: url("./assets/gita.png");
-    background-color: white;
+    background-color: transparent;
     width: 4vh;
     height: 4vh; 
     background-size: 5vh;
@@ -61,7 +61,7 @@
   }
 
   .face{
-    background-color: white;
+    background-color: transparent;
     width: 4vh;
     height: 4vh; 
     background-size: 7vh;
@@ -87,7 +87,7 @@
   }
 
   .wp{
-    background-color: #619ecf;
+    background-color: transparent;
     width: 4vh;
     height: 4vh;
     background-size: 5vh;

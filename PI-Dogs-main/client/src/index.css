@@ -12,3 +12,13 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+body.light{
+  background-color: white;
+  transition: 2s;
+}
+body.dark{
+  transition: 2s;
+  background-color: #282c34;
+  color: aliceblue;
+}

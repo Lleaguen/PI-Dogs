@@ -1,6 +1,7 @@
 import axios from "axios";
 export const GET_ALL_TEMPERAMENTS = 'GET_ALL_TEMPERAMENTS';
 export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
+export const FILTER_BY_BREEDS = 'FILTER_BY_BREEDS';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const FILTER_CREATED_DOG = 'FILTER_CREATED_DOG';
 
@@ -103,23 +104,51 @@ export function getDetails(id) {
 }
 
 
-export function deleteDetails() {
-       return{ 
-        type: 'DELETE_DETAILS'
-    }
-
-}  
-/*
 export function getBreeds() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/breedGroups');
+        var json = await axios.get(`http://localhost:3001/breedGroups`);
         return dispatch({
             type: 'GET_BREEDS',
             payload: json.data
         });
     }
 }
-*/
+export function FilterByBreeds(payload) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get(`http://localhost:3001/breedGroup?breedGroup=${payload}`);
+            return dispatch({
+                type: 'FILTER_BY_BREEDS',
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error, "Error on the filters in actions file")
+        }
+    }
+}
+
+export function deleteDetails() {
+       return{ 
+        type: 'DELETE_DETAILS'
+    }
+
+}  
+
+export function deleteDog(id){
+    return async function (dispatch){
+        try{
+           await axios.delete(`/dogs/${id}`);
+            return dispatch({
+                type: 'DELETE_DOG',
+                payload: id
+            })
+        } catch(error){
+            alert('no se pudo borrar el perro')
+        }
+    }
+}
+
+
 export function clearDetail ()  {
     return {
         type : CLEAR_DETAIL

@@ -104,7 +104,7 @@ router.get('/dogs', async (req,res) => {
                 return res.status(200).send('The dog was created')
             }
         })
-/* router.delete('/dogs/:id', async (req,res) => { 
+router.delete('/dogs/:id', async (req,res) => { 
     let { id } = req.params;
      try{
          await Dog.destroy({
@@ -115,7 +115,7 @@ router.get('/dogs', async (req,res) => {
          res.send({error:'no se borro'})
    }
 })
--
+
 router.get('/breedGroups' , async (req, res) => {
     try {
         const everyDog = await getAllDogs();
@@ -130,6 +130,6 @@ router.get('/breedGroups' , async (req, res) => {
         console.log(error, "Error on breeds route")
     }
 });
-*/
+
 
 module.exports = router;

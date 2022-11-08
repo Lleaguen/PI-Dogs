@@ -149,12 +149,3 @@
   background-image: url("./assets/sun.svg");
 }
 */
-
-#light{
-  background-color: #282c34;
-}
-
-#dark{
-  background-color: #282c34;
-  color: aliceblue;
-}

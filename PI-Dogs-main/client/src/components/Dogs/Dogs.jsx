@@ -40,6 +40,9 @@ export default function Dogs() {
             weight_max={el.weight_max}
             temperament={el.temperament}
             temperaments={el.temperaments}
+            breed_group={el.breed_group}
+            height_min={el.height_min}
+            height_max={el.height_max}
           />
 
         )})
