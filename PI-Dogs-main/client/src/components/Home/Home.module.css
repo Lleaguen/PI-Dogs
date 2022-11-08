@@ -3,3 +3,27 @@
     flex-direction: row;
     margin-left: 10%;
 }
+
+.consigna2{
+    font-family: fantasy;
+    color: transparent;
+    -webkit-text-stroke: 2px #1c91f1;
+    display: flex;
+    justify-content: center;
+    margin:8vh;
+}
+.contain{
+    margin: 20vh;
+    border: 2px solid #1c91f1;
+    border-radius: 20px;
+    height: 20vh;
+}
+
+.contain:hover{
+    padding: 10px;
+    background-color: #619ecf;
+    background: transparent;
+    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+    transition: 2s;
+    border-radius: 10px;
+}

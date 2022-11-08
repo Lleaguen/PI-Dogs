@@ -13,8 +13,8 @@ import {
   orderByWeight,
   getBreeds,
   filterDogsByMAXHeight,
-   filterDogsByMINHeight
-  //FilterByBreeds
+   filterDogsByMINHeight,
+    FilterByBreeds
 } from "../../redux/Actions/index";
 import styles from '../Filter/Filter.module.css';
 import DarkMode from "../darkMode";
@@ -26,7 +26,7 @@ export default function Filter() {
     
     const maldito =useSelector((state) =>  state.temperaments);
     const allDogs = useSelector((state) => state.allDogs);
-  //  const brds = useSelector((state) => state.breeds);
+    const brds = useSelector((state) => state.breeds);
   
   const minWeights = allDogs
     .map((el) => el.weight_min)
@@ -79,11 +79,11 @@ export default function Filter() {
     e.preventDefault();
     dispatch(filterDogsByMINHeight(e.target.value));
   };
-  /*-
+  
   function handleFilteredByBreed(e) {
     e.preventDefault();
     dispatch(FilterByBreeds(e.target.value));
-  };---*/
+  };
 
   
    
@@ -154,7 +154,21 @@ export default function Filter() {
                     }
           </select>
         </div>
-       
+        <div className={styles.filterSection}>
+          <h5 className={styles.filterHeader}>Filter by breed</h5>
+          <select style={{ fontFamily: 'fantasy'}} onChange={handleFilteredByBreed} className={styles.boton_filter}>
+          <option hidden>Breeds</option>
+
+          <option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
+          {
+                        brds.map(e => (
+                            <option style={{ fontFamily: 'fantasy'}}  value={e} > {e} </option>
+                        ))
+                    }
+          </select>
+          </div>
+
+        
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Filter by max weight</h5>
           <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMAXWeight(e)}>

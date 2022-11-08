@@ -103,3 +103,7 @@
         -webkit-text-stroke: 2px #38EDE8;
     }
 }
+.reset{
+    background-color: transparent;
+    border-style: none;
+}

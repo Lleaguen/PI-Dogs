@@ -9,23 +9,22 @@ export default function BarSearch(){
 
   function handleClick(e){
     e.preventDefault();
-  
-
-
-
-  if(dogState.length === 0){
-    return alert("Please input a name to start the search :3");
-  }else{
-    dispatch(getDogsByName(dogState));
-    setDogsState(e.target.value);
-  }
+      if(dogState.length === 0){
+        return alert("Please input a name to start the search :3");
+      }else if(e.target.value !== dogState){
+        return alert("Dog not found :c")
+      }
+      else{
+        dispatch(getDogsByName(dogState));
+        setDogsState(e.target.value);
+      }
 }
   return(
     <div>
       <input type="text" className={Style.Search} style={{ fontFamily:'fantasy'}} placeholder="Search a dog..." value={dogState} onChange={(e) => setDogsState(e.target.value)} />
       <button type="submit" className={Style.button} onClick={handleClick} > 
-      <span className={Style.molestia}></span>
-      </button>
+      <span className={Style.molestia}></span></button> 
+      
     </div>
   )
 }

@@ -131,5 +131,15 @@ router.get('/breedGroups' , async (req, res) => {
     }
 });
 
+router.get('/breedGroup' , async (req, res) => {
+    const breedGroup = req.query.breedGroup;
+    const everyDog = await getAllDogs();
+    const dogSearchResult = everyDog.filter((dog) => {
+        if(breedGroup === 'All') return everyDog
+        else if (dog.breed_group !== undefined) { return (dog.breed_group.toLowerCase()).includes(breedGroup.toLowerCase()) }
+    });
+    res.status(200).json(dogSearchResult)
+});
+
 
 module.exports = router;

@@ -140,6 +140,15 @@ export function FilterByBreeds(payload) {
     }
 }
 
+
+export function resetDogs() {
+    return{ 
+     type: 'RESET_DOGS'
+ }
+
+}  
+
+
 export function deleteDetails() {
        return{ 
         type: 'DELETE_DETAILS'
