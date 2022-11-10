@@ -7,7 +7,6 @@ const initialState = {
     details:[],
     breeds: []
 }
-
 function rootReducer(state = initialState, action) {
     switch (action.type) {
         case 'GET_DOGS':
@@ -37,7 +36,7 @@ function rootReducer(state = initialState, action) {
             
                 const temp = state.dogs
                 const filterTemp = action.payload === 'All' ? temp : temp.filter((e) => {
-                    return e.temperament?.includes(action.payload)
+                    return e.temperaments?.includes(action.payload)
                 }) 
                 console.log(filterTemp)
                 return{
@@ -142,7 +141,9 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 details: action.payload
+                
             }
+            
         case 'DELETE_DETAILS':
             return{
                 ...state,

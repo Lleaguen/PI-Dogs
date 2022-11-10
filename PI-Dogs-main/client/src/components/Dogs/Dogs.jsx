@@ -38,7 +38,6 @@ export default function Dogs() {
             image={el.image}
             weight_min={el.weight_min}
             weight_max={el.weight_max}
-            temperament={el.temperament}
             temperaments={el.temperaments}
             breed_group={el.breed_group}
             height_min={el.height_min}

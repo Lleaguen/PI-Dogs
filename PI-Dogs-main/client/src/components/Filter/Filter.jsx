@@ -162,7 +162,7 @@ export default function Filter() {
           <option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
           {
                         brds.map(e => (
-                            <option style={{ fontFamily: 'fantasy'}}  value={e} > {e} </option>
+                            <option style={{ fontFamily: 'fantasy'}}  value={e} key={e}> {e} </option>
                         ))
                     }
           </select>

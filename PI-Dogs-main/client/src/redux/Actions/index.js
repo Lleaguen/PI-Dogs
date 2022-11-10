@@ -4,7 +4,7 @@ export const FILTER_BY_TEMPERAMENTS = 'FILTER_BY_TEMPERAMENTS';
 export const FILTER_BY_BREEDS = 'FILTER_BY_BREEDS';
 export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export const FILTER_CREATED_DOG = 'FILTER_CREATED_DOG';
-
+export const GET_DETAILS = 'GET_DETAILS'
 
 export function orderByName(payload) {
     return {
@@ -78,11 +78,20 @@ export function getTemperaments() {
     }
 }
 
-export function postDog (payload){
- 
+export function postDog (data){
+ /*
     return async function (dispatch) {
         const response = await axios.post('http://localhost:3001/dogs', payload);
         return response;
+    }*/
+    return async function () {
+    try{
+            const posted = await axios.post('http://localhost:3001/dogs', data);
+            alert('The dog was a created');
+            return posted;
+        }catch(error){
+            alert('This name already exist');
+        }
     }
 }
 
@@ -102,18 +111,25 @@ export function filterCreatedDog (payload) {
 }
 export function getDetails(id) {
     return async function (dispatch) {
-        /* async await
+        // async await
+        try{
             var json = await axios.get(`http://localhost:3001/dogs/${id}`)
             return dispatch({
-                type: 'GET_DETAILS',
+                type: GET_DETAILS,
                 payload: json.data
-            })*/
+            })
+        }catch(error){
+            alert(error);
+        }
+            /*
         return fetch(`http://localhost:3001/dogs/${id}`)
         .then(res => res.json())
         .then(data => {
             dispatch({type: 'GET_DETAILS', payload:data})
-        })
+            
+        })*/
     }
+    
 }
 
 
@@ -165,14 +181,8 @@ export function deleteDog(id){
                 payload: id
             })
         } catch(error){
-            alert('no se pudo borrar el perro')
+            alert("can't delete the dog")
         }
     }
-}
 
-
-export function clearDetail ()  {
-    return {
-        type : CLEAR_DETAIL
-    }
 }

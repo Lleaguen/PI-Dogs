@@ -12,7 +12,7 @@ const getApiInfoDog = async () => {
             name: e.name,
             image: e.image.url,
             breed_group: e.breed_group,
-            temperament: e.temperament,
+            temperaments: e.temperament,
             life_span: e.life_span,
             weight_min: parseInt(e.weight.metric.slice(0, 2).trim()),
             weight_max: parseInt(e.weight.metric.slice(4).trim()),
@@ -40,6 +40,7 @@ const getAllDogs = async () => {
     const apiInfo = await getApiInfoDog();
     const DBInfo = await getDBInfoDog();
     const infoTotal = apiInfo.concat(DBInfo);
+    
     return infoTotal;
 };
 

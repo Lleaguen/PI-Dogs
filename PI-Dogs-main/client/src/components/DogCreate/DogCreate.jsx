@@ -4,6 +4,16 @@ import { useHistory } from "react-router-dom";
 import {postDog, getTemperaments } from "../../redux/Actions/index";
 import style from './DogCreate.module.css'
 import NavBar from "../NavBar/NavBar.jsx";
+import Footer from "../Footer/Footer"
+
+
+
+
+export default function CreateDog () {
+
+
+
+
 
 const validate = (input) => {
     let errors = {}
@@ -11,6 +21,8 @@ const validate = (input) => {
         errors.name = 'Must be a name'
     }
 
+    
+  
     if(input.name && !/^[a-zA-Z]*$/.test(input.name)){
         errors.name = 'The name can not contain numbers or special caracters'
     }
@@ -65,22 +77,22 @@ const validate = (input) => {
             errors.life_span = 'It must be only numbers'
         }
     }
+    if(!input.image){
+        errors.image = 'Must be a image'
+    }
 
     return errors
 
 }
-
-
-
-export default function CreateDog () {
-
     const dispatch = useDispatch();
 
-    const history = useHistory()
+    const history = useHistory();
 
-    const allTemperaments = useSelector((state) => state.temperaments)
+    const allTemperaments = useSelector((state) => state.temperaments);
+    
+    const allDogs = useSelector((state)=> state.allDogs);
 
-    const [errors , setErrors] = useState({})
+    const [errors , setErrors] = useState({});
 
     const [input, setInput] = useState({
         name : "",
@@ -98,12 +110,11 @@ export default function CreateDog () {
             ...input,
             [e.target.name]: e.target.value,
         })
-        console.log(e.target.value)
+        
         setErrors(validate({
             ...input,
             [e.target.name] : e.target.value
         }))
-        console.log(input)
     }
 
     useEffect(() => {
@@ -119,14 +130,14 @@ export default function CreateDog () {
             }
     }
 
-    console.log(handleSelect)
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        console.log(input)
+        if(input.name === allDogs){
+            errors.name = 'This name already exist'
+        }  else{
         dispatch(postDog(input))
 
-        alert("The dog was created")
         setInput({
             name: "",
             height_min: 0,
@@ -138,8 +149,9 @@ export default function CreateDog () {
             temperament: []
         })
         history.push('/home')
+        
     }
-
+}
     const handleErase = (e) => {
         setInput({
             ...input,
@@ -166,35 +178,61 @@ export default function CreateDog () {
         <div className = {style.items}>
             <h3 className={style.fonts}>NAME:</h3>
             <input required className={style.numInput} type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
-
+            <h2 className={style.errorStyle}>
+             {errors.name && (<p> {errors.name} </p>)}
+            </h2>
         </div>
 
         <div className = {style.items}>
             <h3 className={style.fonts}>MIN HEIGHT:</h3>
             <input min='0'  className={style.numInput} type='number' value={input.height_min} name='height_min' onChange = { e => handleChange(e)}  />
+            <h2 className= {style.errorStyle}>
+            {errors.height_min && (<p> {errors.height_min} </p>)}
+            </h2>
         </div>
 
         <div className = {style.items}>
             <h3 className={style.fonts}>MAX HEIGHT:</h3>
             <input  min='0' className={style.numInput} type='number' value={input.height_max} name='height_max' onChange = { e => handleChange(e)}  />
+            <h2 className= {style.errorStyle}>
+            {errors.height_max && (<p> {errors.height_max} </p>)}
+            </h2>
+
         </div>
 
         <div className = {style.items}>
         <h3 className={style.fonts}>MIN WEIGHT: </h3>
         <input  min='0' className={style.numInput} type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
+               
+            <h2 className= {style.errorStyle}>
+            {errors.weight_min && (<p> {errors.weight_min} </p>)}
+            </h2>
+
         </div>
 
         <div className = {style.items}>
         <h3 className={style.fonts} >MAX WEIGHT: </h3>
         <input min='0' className={style.numInput} type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
+        <h2 className= {style.errorStyle}>
+            {errors.weight_max && (<p> {errors.weight_max} </p>)}
+            </h2>
+            
         </div>
         <div className={style.items}>
               <label className={style.fonts}>Image URL:</label>
               <input className={style.numInput} type="url" value={input.image} name="image" placeholder="http://myimageontheweb.com" onChange={(e) => handleChange(e)} />
+              <h2 className= {style.errorStyle}>
+            {errors.image && (<p> {errors.image} </p>)}
+            </h2>
         </div>
         <div className = {style.items}>
             <h3 className={style.fonts}>LIFE SPAN:</h3>
             <input min='0' className={style.numInput} type='number' value={input.life_span} name="life_span" onChange={e => handleChange(e)} />
+              
+            <h2 className= {style.errorStyle}>
+            {errors.life_span && (<p> {errors.life_span} </p>)}
+            </h2>
+
         </div>
         <div>
 
@@ -202,7 +240,7 @@ export default function CreateDog () {
             <div className = {style.items}>
                 <h3 className={style.fonts}>TEMPERAMENTS</h3>
                 <select  className={style.numInput} onChange={handleSelect} >
-                    <option value='all'  selected defaultValue>Temperament</option>
+                    <option value='All'  selected defaultValue>Temperament</option>
                     {
                         allTemperaments.map(e => {
                             return (
@@ -211,6 +249,10 @@ export default function CreateDog () {
                             })
                         }
                 </select>
+                <h2 className= {style.errorStyle}>
+                {errors.temperament && (<p> {errors.temperament} </p>)}
+                </h2>
+
             </div>
 
                 {errors && 
@@ -234,12 +276,11 @@ export default function CreateDog () {
                 !input.image ||
                 !input.temperament.length)
                 ?
-
-                <div className={style.btnh2} >THE DOG CAN NOT BE CREATED YET</div>
+                <div></div>
                 :
                 <button className={style.numInput} type='submit'>CREATE</button>
                 
-            }
+             } 
                 </form>
          
                   <div className= {style.moodDiv} >
@@ -253,53 +294,26 @@ export default function CreateDog () {
                             })
                         }
                         </div>
-                        
+                 {!input.name ? <h1> </h1>:       
                 <div className= {style.errorStyle}>
-                <h2 className={style.fonts}>ERRORS :</h2>
+                <h2 className={style.fontErr}>ERRORS :</h2>
                 <div>
                 <div className= {style.errorStyle}> 
 
-            <h2>
-             {errors.name && (<p> {errors.name} </p>)}
-            </h2>
+                    <h2 className= {style.errorStyle}>
+                    {errors.especial1 && (<p> {errors.especial1} </p>)}
+                    </h2>
 
-            <h2>
-            {errors.height_min && (<p> {errors.height_min} </p>)}
-            </h2>
-
-            <h2>
-            {errors.height_max && (<p> {errors.height_max} </p>)}
-            </h2>
-
-            <h2>
-            {errors.weight_min && (<p> {errors.weight_min} </p>)}
-            </h2>
-
-            <h2>
-            {errors.weight_max && (<p> {errors.weight_max} </p>)}
-            </h2>
-            
-            <h2>
-            {errors.life_span && (<p> {errors.life_span} </p>)}
-            </h2>
-
-            <h2>
-            {errors.temperament && (<p> {errors.temperament} </p>)}
-            </h2>
-
-            <h2>
-            {errors.especial1 && (<p> {errors.especial1} </p>)}
-            </h2>
-
-            <h2>
-            {errors.especial2 && (<p> {errors.especial2} </p>)}
-            </h2>
+                    <h2 className= {style.errorStyle}>
+                    {errors.especial2 && (<p> {errors.especial2} </p>)}
+                    </h2>
 
                 </div>
                 </div>
-                </div>
+                </div>}
                 </div>
             </div>
+            <Footer/>
             </div>
             </>
     )

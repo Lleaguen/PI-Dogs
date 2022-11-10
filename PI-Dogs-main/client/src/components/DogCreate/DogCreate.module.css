@@ -1,15 +1,19 @@
-
 .box{
+    width: 80%;
+    margin-left: 10%;
+
+}
+.background{
     border: 1px solid #0088f7;
     width: 23%;
-    flex-direction: row;
-    margin-left: 33%;
-    padding-left: 16vh;
+    justify-content: center;
+    padding-left: 9vh;
     margin-top: 7vh;
-    border-radius: 8px;
+    margin-left: 33%;
+    border-radius: 7vh;
     height: 90vh;
 }
-.box:hover{
+.background:hover{
     transition: 1s;
     box-shadow:  0 0 10px #619ecf, 0 0 0px #619ecf, 0 0 30px #619ecf;
 }
@@ -17,12 +21,19 @@
     padding-top: 1.5vh;
 }
 .numInput{
+    border-style: none;
+    border-bottom:2px ridge #0088f7;
+    border-radius: 1000px;
     padding: 0.5vh;
     width: 30vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: transparent;
     -webkit-text-stroke: 1px #0088f7;
     
+}
+.numInput:hover{
+    
+    box-shadow:0px 0px 2px #0088f7;
 }
 .fonts{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -45,6 +56,14 @@
 }
 
 .errorStyle{
-    font-family: arial;
-    color:#f17651;
+    color:#f63900;
+    font-size: 2vh;
+    font-family: monospace;
+}
+.fontErr{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 1px #0088f7;
+    font-size: 2vh;
+    padding: 0.5vh;
 }

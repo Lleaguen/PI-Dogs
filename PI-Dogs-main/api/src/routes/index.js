@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllDogs } = require('../Controllers/Controllers')
+const { getAllDogs, getDBInfoDog, getApiInfoDog  } = require('../Controllers/Controllers')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const { Dog, Temperament} = require('../db')
@@ -35,14 +35,28 @@ router.get('/dogs', async (req,res) => {
 
     router.get('/dogs/:idRaza', async (req, res) => {
         const { idRaza } = req.params
-        const allDogs = await getAllDogs()
+        const dogsDB = await getDBInfoDog();
+        const dogsAPI= await getApiInfoDog();
         try {
-                const dogSelected = allDogs.filter((dog) => dog.id == idRaza)
-                if (dogSelected.length){
-                    return res.status(200).send(dogSelected)
-                } 
+                const dogSelectApi = dogsAPI.filter((dog) => dog.id === Number(idRaza));
+                const dogSelectDB = dogsDB.filter((dog) => dog.id === idRaza);
+                
+                if (dogSelectApi.length){
+                    return res.status(200).send(dogSelectApi)
+                }
+                return res.status(200).json([{
+                    name:dogSelectDB[0].dataValues.name,
+                    height_min:dogSelectDB[0].dataValues.height_min,
+                    height_max:dogSelectDB[0].dataValues.height_max,
+                    weight_min:dogSelectDB[0].dataValues.weight_min,
+                    weight_max:dogSelectDB[0].dataValues.weight_max,
+                    life_span:dogSelectDB[0].dataValues.life_span,
+                    image:dogSelectDB[0].dataValues.image,
+                    temperament:dogSelectDB[0].dataValues.temperaments
+
+                }])
         } catch (error) {
-            return res.status(404).send({error: 'The dog is at the park'})
+            return res.status(404).send({error: 'asdasd'})
         }
     });
 
@@ -110,11 +124,30 @@ router.delete('/dogs/:id', async (req,res) => {
          await Dog.destroy({
              where: {id: id}
          })
-         res.send('se borro el dog')
+         res.send('The dog was delete')
     } catch(error){
-         res.send({error:'no se borro'})
+         res.send({error:"The dog wasn't delete"})
    }
 })
+
+router.put('dogs/:id', async (req, res) => {
+    try{
+        const { id } = req.params;
+        const { name, height_max, height_min, weight_max, weight_min, image } = req.body;
+        const Dog = await Dog.findByPk(id);
+     //   const Temperament = await Temperament.findByPk(id);
+        Dog.name = name;
+        Dog.height_max = height_max;
+        Dog.height_min = height_min;
+        Dog.weight_max = weight_max;
+        Dog.weight_min = weight_min;
+        Dog.image = image;
+        await Dog.save();
+        res.send("The dog was updated");
+       } catch(error){
+        console.log(error)
+       }  }
+)
 
 router.get('/breedGroups' , async (req, res) => {
     try {
