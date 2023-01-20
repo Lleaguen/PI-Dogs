@@ -79,7 +79,18 @@ router.get('/dogs', async (req,res) => {
         }catch (error){
              res.status(404).send({error: 'There are not temperaments'})
          }
-    })
+        })
+        router.delete('/dogs/:id', async (req,res) => { 
+            let { id } = req.params;
+             try{
+                 await Dog.destroy({
+                     where: {id: id}
+                 })
+                 res.send('The dog was delete')
+            } catch(error){
+                 res.send({error:"The dog wasn't delete"})
+           }
+        })
     router.post('/dogs', async (req,res) => {
         // try{
             let {
@@ -118,35 +129,41 @@ router.get('/dogs', async (req,res) => {
                 return res.status(200).send('The dog was created')
             }
         })
-router.delete('/dogs/:id', async (req,res) => { 
-    let { id } = req.params;
-     try{
-         await Dog.destroy({
-             where: {id: id}
-         })
-         res.send('The dog was delete')
-    } catch(error){
-         res.send({error:"The dog wasn't delete"})
-   }
-})
 
-router.put('dogs/:id', async (req, res) => {
+router.patch('dogs/:id', async (req, res) => {
+    /*const { id } = req.params;
+    const { name: name, height_max: height_max, height_min: height_min, weight_max:weight_max, weight_min:weight_min, image:image } = req.body;
     try{
-        const { id } = req.params;
-        const { name, height_max, height_min, weight_max, weight_min, image } = req.body;
-        const Dog = await Dog.findByPk(id);
-     //   const Temperament = await Temperament.findByPk(id);
-        Dog.name = name;
-        Dog.height_max = height_max;
-        Dog.height_min = height_min;
-        Dog.weight_max = weight_max;
-        Dog.weight_min = weight_min;
-        Dog.image = image;
-        await Dog.save();
-        res.send("The dog was updated");
+        await Dog.upsert({ name, height_max, height_min, weight_max, weight_min, image }, { where:  { id: id} });
+        return res.send("The dog was updated");
        } catch(error){
-        console.log(error)
-       }  }
+            res.send("The dog wasn't update")
+       }*/
+       const { id } = req.params;
+       const { name, height_max, height_min, weight_max, weight_min,n, temperaments } = req.body;
+      
+       const dogCheck =   await Dog.findOne({
+               where: { id: id } 
+       });
+        if(!dogCheck){
+            return res.send("The dog is not exist")
+        } else{
+        let editDog = await Dog.update({
+            name,
+            height_min,
+            height_max,
+            weight_min,
+            weight_max,
+        });
+
+        const pushDog = await Temperament.findAll({
+            where:{
+                name: temperaments,
+            }
+        })
+        await editDog.addDog(pushDog);
+        return res.send("The dog was updated")
+    }}
 )
 
 router.get('/breedGroups' , async (req, res) => {
