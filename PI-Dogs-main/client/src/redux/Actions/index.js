@@ -22,7 +22,7 @@ export function orderByWeight(payload) {
 
 export function getDogs() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/dogs')
+        var json = await axios.get('https://pi-dogs-production-1d5f.up.railway.app/dogs')
         return dispatch({
             type: 'GET_DOGS',
             payload: json.data
@@ -59,7 +59,7 @@ export function filterDogsByMINHeight(payload) {
 }
 export function getDogsByName(name) {
     return async function (dispatch) {
-        const { data } = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+        const { data } = await axios.get(`https://pi-dogs-production-1d5f.up.railway.app/dogs?name=${name}`);
         return dispatch({
             type: "GET_DOGS_BY_NAME",
             payload: data
@@ -70,7 +70,7 @@ export function getDogsByName(name) {
 
 export function getTemperaments() {
     return async function (dispatch) {
-        var json = await axios.get('http://localhost:3001/temperaments')
+        var json = await axios.get('https://pi-dogs-production-1d5f.up.railway.app/temperaments')
         return dispatch({
             type: 'GET_ALL_TEMPERAMENTS',
             payload: json.data
@@ -86,7 +86,7 @@ export function postDog (data){
     }*/
     return async function () {
     try{
-            const posted = await axios.post('http://localhost:3001/dogs', data);
+            const posted = await axios.post('https://pi-dogs-production-1d5f.up.railway.app/dogs', data);
             alert('The dog was a created');
             return posted;
         }catch(error){
@@ -95,6 +95,28 @@ export function postDog (data){
     }
 }
 
+export function putDog(id){
+    return async function(data){
+        try{
+            const updated = await axios.put(`https://pi-dogs-production-1d5f.up.railway.app/dogs/${id}`, data);
+            alert('The dog was a updated');
+            return updated;
+        }catch(error){
+            alert("The dog wasn't update");
+        }
+    }
+}
+
+export function deleteDog(id){
+    return async function(dispatch){
+          const del =await axios.delete(`https://pi-dogs-production-1d5f.up.railway.app/dogs/${id}`);
+          alert("The dog was deleted");
+             return dispatch({
+                 type: 'DELETE_DOG',
+                 payload: id,
+                 }, del);
+}
+}
 
 export function FilterByTemperament(payload) {
     return{
@@ -113,7 +135,7 @@ export function getDetails(id) {
     return async function (dispatch) {
         // async await
         try{
-            var json = await axios.get(`http://localhost:3001/dogs/${id}`)
+            var json = await axios.get(`https://pi-dogs-production-1d5f.up.railway.app/dogs/${id}`)
             return dispatch({
                 type: GET_DETAILS,
                 payload: json.data
@@ -135,7 +157,7 @@ export function getDetails(id) {
 
 export function getBreeds() {
     return async function (dispatch) {
-        var json = await axios.get(`http://localhost:3001/breedGroups`);
+        var json = await axios.get(`https://pi-dogs-production-1d5f.up.railway.app/breedGroups`);
         return dispatch({
             type: 'GET_BREEDS',
             payload: json.data
@@ -145,7 +167,7 @@ export function getBreeds() {
 export function FilterByBreeds(payload) {
     return async function (dispatch) {
         try {
-            var json = await axios.get(`http://localhost:3001/breedGroup?breedGroup=${payload}`);
+            var json = await axios.get(`https://pi-dogs-production-1d5f.up.railway.app/breedGroup?breedGroup=${payload}`);
             return dispatch({
                 type: 'FILTER_BY_BREEDS',
                 payload: json.data
@@ -171,7 +193,7 @@ export function deleteDetails() {
     }
 
 }  
-
+/*
 export function deleteDog(id){
     return async function (dispatch){
         try{
@@ -185,4 +207,4 @@ export function deleteDog(id){
         }
     }
 
-}
+}*/
