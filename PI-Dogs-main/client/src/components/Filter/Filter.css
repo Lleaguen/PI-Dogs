@@ -46,7 +46,7 @@
     padding: 3vh;
     
     transform: translateX(-100%);
-    height: -webkit-fill-available;
+    height: -webkit-fill;
     transition: 0.3s ease all;
    }
    .side.open{
