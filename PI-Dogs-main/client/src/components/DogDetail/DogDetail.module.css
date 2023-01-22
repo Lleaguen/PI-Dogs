@@ -1,137 +1,181 @@
-
-
-.contain:hover{
-    padding: 10px;
-    background-color: #619ecf;
-    background: transparent;
-    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
-    transition: 2s;
-    border-radius: 10px;
-}
-
-.background:hover{
-    padding: 10px;
-    background-color: #619ecf;
-    background: transparent;
-    box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
-    transition: 2s;
-    border-radius: 10px;
-}
-.boton_neon {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: transparent;
-    border: 0;
-    color: #619ecf;
-    text-transform: uppercase;
-    padding-left: 180px;
-    font-size: 4vh;
-    letter-spacing: 5px;
-    position: relative;
-    transition: all ease-out 200ms;
-    animation: efecto-texto-luz 2s ease-in infinite normal both;
-}
-.boton_neon:hover {
-    color: #38EDE8;
-    text-shadow: 0 0 3px #38EDE8;
-    animation: none !important;
-}
-.boton_neon::after,
-.boton_neon::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: -3px;
-    top: -3px;
-    border-radius: 8px;
-    transition: all ease-out 200ms;
-    animation: efecto-luz 1.5s ease-in infinite normal both;
-}
-.boton_neon:hover::before,
-.boton_neon:hover::after {
-    border-color: #38EDE8;
-    animation: none !important;
-}
-.boton_neon:hover::before {
-    filter: blur(4px);
-}
-.boton_neon:active {
-    color: #619ecf;
-    text-shadow: 0 0 0 #619ecf;
-}
-.boton_neon:active::before,
-.boton_neon:active::after {
-    animation: none !important;
-}
-
-@keyframes efecto-texto-luz {
-    from, 20%, 36%, to {
-        color: #619ecf;
+@media screen and (max-width:1080px) {
+   
+    .container{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        
+        
     }
-    23% {
-        color: #38EDE8;
+    .contaimain{
+        height: 60vh;
+        
     }
-}
-.container{
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
+    .background{
+        border: 2px solid #1c91f1;
+        border-radius: 10px;
+        width: 100%;
+        margin-top: 40px;
+        transition: 2s;
+        
+    }
+    .dogdetail{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image{
+        border-radius: 100% ;
+        width: 25vh;
+        height: 25vh;
+        background-color: rgba(0, 0, 0, .7);
+    }
+    .consigna{
+        display: none;
+    }
+    .consigna2, .data{
+        font-family: fantasy;
+        color: transparent;
+        -webkit-text-stroke: 2px #1c91f1;
+    }
+   }
 
-}
-.contaimain{
-    height: 60vh;
-}
-.background{
-    border: 2px solid #1c91f1;
-    border-radius: 10px;
-    display: flex;
-    justify-content:center;
-    width: 100%;
-    flex-direction: row;
-    margin-top: 40px;
-    transition: 2s;
-}
-
-.image{
-    position: absolute;
-    display: flex;
-    border-radius: 100% ;
-    margin-left: 480px;
-    height: 36vh;
-    background-color: rgba(0, 0, 0, .7);
-}
-.consigna{  
+@media screen and (min-width:1080px) {
+    .contain:hover{
+        padding: 10px;
+        background-color: #619ecf;
+        background: transparent;
+        box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+        transition: 2s;
+        border-radius: 10px;
+    }
     
-    display: flex;
-    font-family: fantasy;
-    justify-content: flex-start;
-    color: transparent;
-    margin: 20px;
-    margin-right:  200px;
-    margin-left: -90%;
-    -webkit-text-stroke: 2px #1c91f1;
-    padding: 7px;
+    .background:hover{
+        padding: 10px;
+        background-color: #619ecf;
+        background: transparent;
+        box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+        transition: 2s;
+        border-radius: 10px;
+    }
+    .boton_neon {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: transparent;
+        border: 0;
+        color: #619ecf;
+        text-transform: uppercase;
+        padding-left: 180px;
+        font-size: 4vh;
+        letter-spacing: 5px;
+        position: relative;
+        transition: all ease-out 200ms;
+        animation: efecto-texto-luz 2s ease-in infinite normal both;
+    }
+    .boton_neon:hover {
+        color: #38EDE8;
+        text-shadow: 0 0 3px #38EDE8;
+        animation: none !important;
+    }
+    .boton_neon::after,
+    .boton_neon::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -3px;
+        top: -3px;
+        border-radius: 8px;
+        transition: all ease-out 200ms;
+        animation: efecto-luz 1.5s ease-in infinite normal both;
+    }
+    .boton_neon:hover::before,
+    .boton_neon:hover::after {
+        border-color: #38EDE8;
+        animation: none !important;
+    }
+    .boton_neon:hover::before {
+        filter: blur(4px);
+    }
+    .boton_neon:active {
+        color: #619ecf;
+        text-shadow: 0 0 0 #619ecf;
+    }
+    .boton_neon:active::before,
+    .boton_neon:active::after {
+        animation: none !important;
+    }
+    
+    @keyframes efecto-texto-luz {
+        from, 20%, 36%, to {
+            color: #619ecf;
+        }
+        23% {
+            color: #38EDE8;
+        }
+    }
+    .container{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    
+    }
+    .contaimain{
+        height: 60vh;
+    }
+    .background{
+        border: 2px solid #1c91f1;
+        border-radius: 10px;
+        display: flex;
+        justify-content:center;
+        width: 100%;
+        flex-direction: row;
+        margin-top: 40px;
+        transition: 2s;
+    }
+    
+    .image{
+        position: absolute;
+        display: flex;
+        border-radius: 100% ;
+        margin-left: 480px;
+        height: 36vh;
+        background-color: rgba(0, 0, 0, .7);
+    }
+    .consigna{  
+        
+        display: flex;
+        font-family: fantasy;
+        justify-content: flex-start;
+        color: transparent;
+        margin: 20px;
+        margin-right:  200px;
+        margin-left: -90%;
+        -webkit-text-stroke: 2px #1c91f1;
+        padding: 7px;
+    }
+    .contain{
+        margin-left:-100px ;
+        margin-top: -390px;
+        transition: 2s;
+        display: flex;
+        flex-direction: column;
+        font-family: fantasy;
+        padding: 20px;
+        color: transparent;
+        -webkit-text-stroke: 2px #1c91f1;
+        justify-content: space-between;
+        border: 2px solid #1c91f1;
+        width: 50vh;
+        height: 35vh;
+        border-radius: 40px;
+        margin-bottom: 10px;
+    }
+    .consigna2{
+        font-family: fantasy;
+        color: transparent;
+        -webkit-text-stroke: 2px #1c91f1;
+    }
 }
-.contain{
-    margin-left:-100px ;
-    margin-top: -390px;
-    transition: 2s;
-    display: flex;
-    flex-direction: column;
-    font-family: fantasy;
-    padding: 20px;
-    color: transparent;
-    -webkit-text-stroke: 2px #1c91f1;
-    justify-content: space-between;
-    border: 2px solid #1c91f1;
-    width: 50vh;
-    height: 35vh;
-    border-radius: 40px;
-    margin-bottom: 10px;
-}
-.consigna2{
-    font-family: fantasy;
-    color: transparent;
-    -webkit-text-stroke: 2px #1c91f1;
-}
+
