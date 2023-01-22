@@ -17,10 +17,11 @@ export default function BarSearch(){
       }
 }
   return(
-    <div>
+    <div className={Style.searchArea}>
       <input type="text" className={Style.Search} style={{ fontFamily:'fantasy'}} placeholder="Search a dog..." value={dogState} onChange={(e) => setDogsState(e.target.value)} />
       <button type="submit" className={Style.button} onClick={handleClick} > 
       <span className={Style.molestia}></span></button> 
+      <button type="submit" className={Style.btn} onClick={handleClick}>Search!</button>
       
     </div>
   )

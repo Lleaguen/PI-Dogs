@@ -1,3 +1,80 @@
+@media screen and (max-width: 1080px) {
+  .dogCard {
+      margin: 10px 15px;
+      width: 12vh;
+      height: 20vh;
+      border-radius: 4%;
+      box-shadow: 6px 7px 8px -6px rgba(69,69,69,0.7);
+      border: 2px solid;
+      border-color: #619ecf ;
+      padding: 10px;
+      padding-top: 3vh;
+      padding-bottom: 3vh;
+      transition: 1.5s;
+    }
+    .dogCard:hover{
+      transform: scale(1.05,1.05);
+      border-color: #619ecf;
+      box-shadow: 0 0 10px #619ecf, 0 0 40px #619ecf, 0 0 80px #619ecf;
+      transition: 1s;
+    }
+
+    .dogName{
+      text-align: center;
+      font-family: monospace;
+      font-style: oblique;
+    }
+    .breed{
+      text-align: center;
+      font-family: monospace;
+      font-style: oblique;
+    }
+    
+    
+    .titleArea {
+      font-size: 1.5vh;
+      color:#619ecf;
+    }
+    
+    .Link {
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .infoArea{
+      padding-top: 1vh;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    
+    .tempArea {
+      margin:20px 15px;
+      padding: 6px;
+      max-width: 100%;
+      color:#619ecf;
+    }
+    
+    .dogTemp {     
+        display: none;
+    }
+    .dogTemp2{
+        display: none;
+    }
+    .imageArea {
+      display: flex;
+      border-radius: 4%;
+    }
+    
+    .dogImage {
+      padding-top: 2vh;
+      width: 12vh;
+      height: 13vh;
+      border-radius: 100%;
+    }
+  }
+
+
+@media screen and (min-width: 1080px) {
+
 .dogCard {
     margin: 10px 15px;
       width: 300px;
@@ -39,7 +116,7 @@
       color:#619ecf;
     }
     
-    a {
+    .Link {
       color: #ffffff;
       text-decoration: none;
     }
@@ -83,6 +160,4 @@
       width: 100%;
       border-radius: 2%;
     }
-    .dogImage:hover{
-      transition: 1s;
-    }
+  }

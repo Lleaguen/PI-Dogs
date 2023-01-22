@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c5687b2b.css",
+    "main.js": "/static/js/main.2fa765d5.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/perros.mp4": "/static/media/perros.5ea18c9214743bd9ba5a.mp4",
+    "static/media/wp1.png": "/static/media/wp1.159f6f5354786a29fe1a.png",
+    "static/media/perro1.png": "/static/media/perro1.0bdd93ef552aaacffff3.png",
+    "static/media/music2.mp3": "/static/media/music2.8a0bbf4f2008b1fd1201.mp3",
+    "static/media/lupa_blanca.png": "/static/media/lupa_blanca.3ec6c4d727dd87d1fc08.png",
+    "static/media/wp2.png": "/static/media/wp2.2c11b4940ab2f24f6c51.png",
+    "static/media/lupa_negra.png": "/static/media/lupa_negra.8fec31abc8c048b6e02c.png",
+    "static/media/face1.png": "/static/media/face1.823f84f9a188cf7450f3.png",
+    "static/media/linked.png": "/static/media/linked.d3532ebb93ae7c37697b.png",
+    "static/media/face2.png": "/static/media/face2.97d4ae6f0350a41aebc7.png",
+    "static/media/gitazul.png": "/static/media/gitazul.e5eab28c35e918f16eff.png",
+    "static/media/gita.png": "/static/media/gita.9b860115ea5353d5864d.png",
+    "static/media/linkedazul.png": "/static/media/linkedazul.bc3947b4333e58b339be.png",
+    "index.html": "/index.html",
+    "main.c5687b2b.css.map": "/static/css/main.c5687b2b.css.map",
+    "main.2fa765d5.js.map": "/static/js/main.2fa765d5.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5687b2b.css",
+    "static/js/main.2fa765d5.js"
+  ]
+}

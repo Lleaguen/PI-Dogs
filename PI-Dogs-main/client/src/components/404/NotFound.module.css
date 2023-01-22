@@ -1,4 +1,41 @@
-.main{
+@media screen and (max-width:1080px){
+    .main{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .main1{
+        display: none;
+    }
+    
+    .notfound{
+        text-align: center;
+        font-size: 6vh;
+        height: 40vh;
+        margin-top: 10vh;
+    }
+    
+    .not{
+        padding-right: 40px;
+        color: transparent;    
+        -webkit-text-stroke: 2px #1c91f1;
+        
+        animation: lux 1.1s ease-in infinite normal both;
+    }
+    .found{
+        
+        color: transparent;    
+        -webkit-text-stroke: 9px #1c91f1;
+        animation: lux 1.1s ease-in infinite normal both;
+    }
+
+}
+
+@media screen and (min-width:1080px)
+{
+
+    
+    .main{
     margin-top: 10%;
     width: 80%;
     margin-left: 10%;
@@ -27,6 +64,7 @@
     color: transparent;    
     -webkit-text-stroke: 9px #1c91f1;
     animation: lux 1.1s ease-in infinite normal both;
+}
 }
 @keyframes lux {
     from, 20%, 36%, to{

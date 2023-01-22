@@ -7,7 +7,7 @@ export default function Card( { id, name, image, temperaments, weight_min, weigh
     return (
       
         <div className={styles.dogCard}>
-          <Link to={`/dogs/${id}`} >
+          <Link to={`/dogs/${id}`} className={styles.Link}>
             <div className={styles.titleArea}>
               <h4 className={styles.dogName}> {name}</h4>
               <h6 className={styles.breed}>{breed_group}(breed group)</h6>

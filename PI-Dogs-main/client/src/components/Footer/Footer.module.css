@@ -1,3 +1,101 @@
+
+@media screen and (max-width:1080px) {
+  .span{
+    box-shadow: #619ecf;
+    border-top: 1px solid #619ecf;
+    height: 1px;
+    width: 100%;
+    padding: 0;
+    margin: 20px auto 0 auto;
+  }
+
+  .linked{
+    background-color: transparent;
+    width: 4vh;
+    height: 4vh; 
+    background-size: 7vh;
+    cursor: pointer;
+    border-radius: 0px;
+    border: 0;    
+    align-items: center;
+    background-image: url("./assets/linkedazul.png");
+    background-repeat: no-repeat;
+    background-position: center;    
+  }
+
+  .git{
+    background-color: transparent;
+    width: 4vh;
+    height: 4vh; 
+    background-size: 5vh;
+    cursor: pointer;
+    border-radius: 80px;
+    border: 0;    
+    align-items: center;
+    background-image: url("./assets/gitazul.png");
+    background-repeat: no-repeat;
+    background-position: center;    
+  }
+
+  .face{
+    background-color: transparent;
+    width: 4vh;
+    height: 4vh; 
+    background-size: 7vh;
+    cursor: pointer;
+    border-radius: 80px;
+    border: 0;    
+    align-items: center;
+    background-image: url("./assets/face1.png");
+    background-repeat: no-repeat;
+    background-position: center;    
+  }
+  .wp{
+    background-color: transparent;
+    width: 4vh;
+    height: 4vh;
+    background-size: 5vh;
+    cursor: pointer;
+    border-radius: 80px;
+    border: 0;
+    align-items: center;
+    background-image: url("./assets/wp1.png");
+    background-repeat: no-repeat;
+    background-position: center;    
+  }
+
+  .left{
+    display: none;
+  }
+  
+.rigth{
+  display: flex;
+  flex-direction: column;
+  font-size: 2vh;
+  color: #1c91f1;
+  padding: 10px;
+  align-items: center;    
+}
+.neondetail{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.blocks{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  font-size: 2vh;
+}
+.contact{
+  display: flex;
+}
+.contact a{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 10px;
+}
+}
+@media screen and (min-width:1080px) {
+
 .span{
     box-shadow: #619ecf;
     border-top: 1px solid #619ecf;
@@ -114,6 +212,9 @@
 
 .contain{
     height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .main{
@@ -144,9 +245,7 @@
 }
 .rigth{
     display: inline-block;
-    justify-content: flex-end;
-    margin-left: 800px;
-    align-content: space-around;    
+    justify-content: flex-end;    
 }
 .left{
     display: inline-block;
@@ -161,4 +260,5 @@
     font-size: 2vh;
     font-family: monospace;
     padding-top: 5px;
+}
 }

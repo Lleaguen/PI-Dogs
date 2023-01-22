@@ -1,5 +1,5 @@
 
-import React,{ useEffect } from "react";
+import React,{ useEffect, useState } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -18,7 +18,7 @@ import {
 } from "../../redux/Actions/index";
 import styles from '../Filter/Filter.module.css';
 import DarkMode from "../darkMode";
-
+import './Filter.css';
 
 
 export default function Filter() {
@@ -85,18 +85,30 @@ export default function Filter() {
     dispatch(FilterByBreeds(e.target.value));
   };
 
-  
+   const [isOpen, setIsOpen] = useState(false);
    
   return (
     <>
-    
-    <div className={styles.side} id="light">
+    <div className={styles.navToggle}>
+        <div className={`toggle ${isOpen && 'open'}`}  onClick={ () => setIsOpen(!isOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>  
+        <div className={styles.filt}>
+          <span>Filters and Theme</span>
+        </div>
+      </div>
+      <div className={styles.side}>
+    <div className={`side ${isOpen && 'open'}`} id={isOpen && 'open'} >
+      
         <div className={styles.sideBarHeader}>
           <h4 className={styles.header}>Theme</h4>
             
         <DarkMode/>
         </div>
         <hr className={styles.barra}/>
+        <div className={styles.filters}>
         <div className={styles.filterSection}>
           <h5 className={styles.filterHeader}>Order by name</h5>
           <select style={{ fontFamily: 'fantasy'}}
@@ -113,7 +125,7 @@ export default function Filter() {
         </div>
         
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Order by weight</h5>
+          <h5 className={styles.filterHeader}>by weight</h5>
           <select style={{ fontFamily: 'fantasy'}}
             onChange={(e) => {
               handleClickOrderWeight(e);
@@ -170,7 +182,7 @@ export default function Filter() {
 
         
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Filter by max weight</h5>
+          <h5 className={styles.filterHeader}>Max weight</h5>
           <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMAXWeight(e)}>
             <option style={{ fontFamily: 'fantasy'}} defaultValue>All Weights</option>
             {allDogsMaxWeights.map((maxWeight) => {
@@ -187,7 +199,7 @@ export default function Filter() {
           </select>
         </div>
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Filter by min weight</h5>
+          <h5 className={styles.filterHeader}>Min weight</h5>
           <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMINWeight(e)}>
             <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
             {allDogsMinWeights.map((minWeight) => {
@@ -203,7 +215,7 @@ export default function Filter() {
           </select>
         </div>
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Filter by max height</h5>
+          <h5 className={styles.filterHeader}>Max height</h5>
           <select style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMAXHeight(e)}>
             <option style={{ fontFamily: 'fantasy'}} defaultValue>All heights</option>
             {allDogsMaxWeights.map((height_max) => {
@@ -220,7 +232,7 @@ export default function Filter() {
           </select>
         </div>
         <div className={styles.filterSection}>
-          <h5 className={styles.filterHeader}>Filter by min weight</h5>
+          <h5 className={styles.filterHeader}>Min height</h5>
           <select  style={{ fontFamily: 'fantasy'}} className={styles.boton_filter} onChange={(e) => handleFilteredMINHeight(e)}>
             <option  style={{ fontFamily: 'fantasy'}} value="all">All Weights</option>
             {allDogsMinWeights.map((height_min) => {
@@ -234,6 +246,7 @@ export default function Filter() {
             })}
 
           </select>
+        </div>
         </div>
         <hr className={styles.barra}/>
         <div className={styles.filterSection}>
@@ -250,24 +263,8 @@ export default function Filter() {
         </div>
         
       </div>
-      
+      </div>
       <div className={styles.span}></div>
     </>
   );
 }
-/*
-
-<div className={styles.filterSection}>
-<h5 className={styles.filterHeader}>Filter by breed</h5>
-<select style={{ fontFamily: 'fantasy'}} onChange={handleFilteredByBreed} className={styles.boton_filter}>
-<option hidden>Breeds</option>
-
-<option  style={{ fontFamily: 'fantasy'}} key={1+'e'} value='All'>All</option>
-{
-              brds.map(e => (
-                  <option style={{ fontFamily: 'fantasy'}}  value={e} > {e} </option>
-              ))
-          }
-</select>
-</div>
-*/

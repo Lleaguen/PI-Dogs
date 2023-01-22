@@ -22,6 +22,7 @@ export default function Dogs() {
     dispatch(getDogs());
   }, [dispatch]);
 
+
   return (
     <Fragment>
      <div className={styles.dogsArea}>
@@ -49,11 +50,13 @@ export default function Dogs() {
        
       </div>
       <div className={styles.paginate}>
+   
       <Pagination
           dogsPerPage={dogsPerPage}
           allDogs={allDogs.length}
           pagination={pagination}
           currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
         </div>
     </Fragment>
